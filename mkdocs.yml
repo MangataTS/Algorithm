@@ -43,3 +43,10 @@ plugins:
   - search
   - roamlinks 
     #- autolinks 
+  - exclude:
+      glob:
+        - "*.tmp"
+        - "*.pdf"
+        - "*.gz"
+      regex:
+        - '.*\.(tmp|bin|tar)$'
