@@ -19,8 +19,8 @@ markdown_extensions:
       slugify: !!python/name:pymdownx.slugs.uslugify # 解决中文标题解析问题
   - admonition
   - codehilite:
-      guess_lang: false
-      linenums: false
+      guess_lang: true
+      linenums: true
   - footnotes
   - meta
   - def_list
