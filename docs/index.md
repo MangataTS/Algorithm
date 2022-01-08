@@ -1,17 +1,3 @@
-# Foam-mkdocs-template
-Welcome to Foam-mkdocs-template! [[#support roamlinks]]!
+# 算法和数据结构学习笔记
 
-* How to create this website and share your foam/obsidian notes? See: [[tutorial]]
-* [foam](https://github.com/foambubble/foam)
-
-
-## Support roamlinks
-
-| origin                  | convert                             |
-| ----------------------- | ----------------------------------- |
-| `[Git Flow](git_flow.md)` | `[Git Flow](../software/git_flow.md)` |
-| `[[Git Flow]]`            | `[Git Flow](../software/git_flow.md)` |
-| `![[image.png]]`           | `![image.png](../image/imag.png)`      |
-| `[[#Heading identifiers]]` | `[Heading identifiers in HTML](#heading-identifiers-in-html)`|
-| `[[Git Flow#Heading]]`     |  `[Git Flow](../software/git_flow.md#heading)` |
-
+欢迎来到我的算法和数据结构学习笔记的一个小网站，在这里我将记录一些算法的个人理解以及题目集合，包括不限于各大OJ以及蓝桥杯、天梯赛、ICPC、CCPC等训练的题解。
