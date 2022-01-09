@@ -60,5 +60,3 @@ plugins:
         - "*.gz"
       regex:
         - '.*\.(tmp|bin|tar)$'
-extra:
-  disqus: <shortname> 
