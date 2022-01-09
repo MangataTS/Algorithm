@@ -53,7 +53,6 @@ markdown_extensions:
   - pymdownx.tilde
 plugins:
   - search
-  - git-revision-date
   - roamlinks 
     #- autolinks 
   - exclude:
