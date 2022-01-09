@@ -4,16 +4,16 @@
 
 site_name: Algorithm
 theme:
+  icon:
+    repo: fontawesome/brands/github
+  logo: logo.png
   name: material
-  palette: 
-    - scheme: default
-      toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
-    - scheme: slate 
-      toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode
+  favicon: logo.png
+  features:
+    - navigation.tabs
+  palette:
+    primary: pink
+    accent: deep purple
    #  favicon: attachment/portrait.png
   language: zh # 中文，解决中文搜索问题
   features:
@@ -49,6 +49,8 @@ markdown_extensions:
   - pymdownx.tasklist
   - pymdownx.tilde
 plugins:
+  - git-revision-date-localized:
+      type: date
   - search
   - roamlinks 
     #- autolinks 
@@ -59,3 +61,5 @@ plugins:
         - "*.gz"
       regex:
         - '.*\.(tmp|bin|tar)$'
+extra:
+  disqus: <shortname> 
