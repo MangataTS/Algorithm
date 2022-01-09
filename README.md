@@ -1,50 +1,42 @@
-# Foam/Obsidian-mkdocs-template
-[**中文文档**](https://github.com/Jackiexiao/foam-mkdocs-template/blob/master/README-zh.md)
+# 算法和数据结构
 
-![foam-mkdocs-template-png](demo-mkdocs.png)
+欢迎来到我的算法和数据结构学习笔记的一个小网站，在这里我将记录一些算法的个人理解以及题目集合，包括不限于各大OJ以及蓝桥杯、天梯赛、ICPC、CCPC等训练的题解。
 
-* Share your **foam/obsidian/markdown** notes in a simple and intuitive way ! Support [[roamlike link]] 
+# 图论
 
-This template use [mkdocs](https://www.mkdocs.org/user-guide/configuration/), [mkdocs-material](https://squidfunk.github.io/mkdocs-material/), [mkdocs-roamlinks-plugin](https://github.com/Jackiexiao/mkdocs-roamlinks-plugin) and many mkdocs plugins.
+## DFS
+
+## BFS
+
+## 最短路
+
+## 拓扑排序
+
+## 二分图
+
+## 最小生成树
 
 
-## Demo
 
-* [github page](https://jackiexiao.github.io/foam-mkdocs-template/)
-* 国内访问[gitee page](https://jackiegeek.gitee.io/foam-mkdocs-template/)
+# 数据结构
+
+## 并查集
+
+## 单调栈
+
+## 单调队列
 
 
-## Usage：Deploy to github page
 
-1. fork this repository 
-2. copy ` .github mkdocs.yml requirements.txt` to your repo, and create `docs` directory 
-3. add your documents to `docs` , `docs/index.md` is the main page of the website
-4. open `mkdocs.yml`, modify `site_name` to your website name, this file is the setting of website, visit link below to get more information(for example, you may want to change language to en)
-* [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
-* [mkdocs](https://www.mkdocs.org/user-guide/configuration/)
-5. push to github, ps: before push to github, you may want to preview your website locally, please view [deploy locally](#deploy-locally)
-6. go to github setting, open github page, choose `gh-pages` branch, wait a moment, then visit `http://<your-github-username.github.io/<your-repo>`, for example:`jackiexiao.github.io/blog/`
-7. Done! That's all! Have fun!
+# 数论
 
-Thx to `Github Action`, it make deploy a blog so easy, all you need todo is modify and push your file
 
-## Deploy Locally
 
-The simplest way: Enter your local repo directory, make sure your python > 3.6
-```
-pip install -U -r requirements.txt
-mkdocs serve 
-```
-Then visit `http://127.0.0.1:8000/`
+## GCD
 
-## Support syntax
-This template will convert roam/obsidian/foam like links to web support links
+## 拓展GCD
 
-| origin                  | convert                             |
-| ----------------------- | ----------------------------------- |
-| `[Git Flow](git_flow.md)` | `[Git Flow](../software/git_flow.md)` |
-| `[[Git Flow]]`            | `[Git Flow](../software/git_flow.md)` |
-| `![[image.png]]`           | `![image.png](../image/imag.png)`      |
-| `[[#Heading identifiers]]` | `[Heading identifiers in HTML](#heading-identifiers-in-html)`
-| ` [[Git Flow#Heading]]` | `[Git Flow](../software/git_flow.md#heading)` |
+## 三大素数筛
+
+## 欧拉函数
 

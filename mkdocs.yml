@@ -1,11 +1,14 @@
 # official tutorial 
 # mkdocs-material: https://squidfunk.github.io/mkdocs-material/
 # mkdocs: https://www.mkdocs.org/user-guide/configuration/
-
+repo_url: https://github.com/MangataTS/Algorithm
 site_name: Algorithm
 theme:
+  features:
+    - header.autohide
+    - navigation.top
   icon:
-    repo: fontawesome/brands/github
+     repo: fontawesome/brands/github-alt
   logo: logo.png
   name: material
   favicon: logo.png
@@ -50,6 +53,7 @@ markdown_extensions:
   - pymdownx.tilde
 plugins:
   - search
+  - git-revision-date-localized
   - roamlinks 
     #- autolinks 
   - exclude:
@@ -59,3 +63,4 @@ plugins:
         - "*.gz"
       regex:
         - '.*\.(tmp|bin|tar)$'
+copyright: Copyright &copy; power by Kaptree
