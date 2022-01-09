@@ -49,8 +49,8 @@ markdown_extensions:
   - pymdownx.tasklist
   - pymdownx.tilde
 plugins:
-  - git-revision-date-localized
   - search
+  - git-revision-date-localized
   - roamlinks 
     #- autolinks 
   - exclude:

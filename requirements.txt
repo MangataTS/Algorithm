@@ -2,4 +2,4 @@ mkdocs-material==5.1.1
 mkdocs==1.1
 mkdocs-roamlinks-plugin
 mkdocs-exclude
-mkdocs-git-revision-date-localized
+git-revision-date-localized
