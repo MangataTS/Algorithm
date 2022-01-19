@@ -30,7 +30,7 @@ KMP算法（也叫看猫片算法(bushi）是Knuth、Pratt 和 Morris 在 1977 �
 
 3.如果没有相等的那么next[i]就是0
 
-假定字符串S为 $ abcabca $
+假定字符串S为 $abcabca$
 
 那么next数组的值为
 
