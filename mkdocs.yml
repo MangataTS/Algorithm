@@ -5,9 +5,11 @@ repo_url: https://github.com/MangataTS/Algorithm
 site_name: Algorithm
 theme:
   features:
+    - navigation.tabs
     - header.autohide
     - navigation.top
     - content.code.annotate 
+    - toc.integrate
   icon:
      repo: fontawesome/brands/github-alt
   logo: logo.png
@@ -27,8 +29,12 @@ markdown_extensions:
   - attr_list # https://squidfunk.github.io/mkdocs-material/reference/images/
   - pymdownx.tabbed  # https://squidfunk.github.io/mkdocs-material/reference/content-tabs/
   - nl2br # newline-to-break 
+  - admonition
+  - codehilite:
+      guess_lang: false
+      linenums: false
   - toc:
-      permalink: '#' # heading anchor 
+      permalink: true # heading anchor 
       slugify: !!python/name:pymdownx.slugs.uslugify # 解决中文标题解析问题
   - admonition
   - codehilite:
@@ -43,8 +49,8 @@ markdown_extensions:
   - pymdownx.caret
   - pymdownx.critic
   - pymdownx.details
-  # - pymdownx.emoji:
-      # emoji_generator: !!python/name:pymdownx.emoji.to_png
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_png
   - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
