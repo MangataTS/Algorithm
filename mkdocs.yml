@@ -6,13 +6,14 @@ site_name: Algorithm
 theme:
   features:
     - navigation.instant
-    - navigation.tracking
+    - navigation.tabs
     - navigation.tabs.sticky
     - header.autohide
     - navigation.top
     - toc.integrate
     - content.code.annotate 
     - toc.follow
+    - navigation.indexes
   icon:
      repo: fontawesome/brands/github-alt
   logo: logo.png
@@ -60,7 +61,6 @@ markdown_extensions:
 plugins:
   - search
   - roamlinks 
-    #- autolinks 
   - exclude:
       glob:
         - "*.tmp"
