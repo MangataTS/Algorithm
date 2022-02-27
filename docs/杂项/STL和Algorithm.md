@@ -1,24 +1,26 @@
 # STL和Algorithm
-@[toc]
-# 配套视频
+
+## 前言
+配套视频：
+
 蓝桥杯集训之Algorithm库函数: [https://www.bilibili.com/video/BV1ia411B7U2](https://www.bilibili.com/video/BV1ia411B7U2)
 
 蓝桥杯集训之STL演示：[https://www.bilibili.com/video/BV1Z3411v72U](https://www.bilibili.com/video/BV1Z3411v72U)
 
 蓝桥杯集训之Algorithm库函数：[https://www.bilibili.com/video/BV1Y34y1z7uX](https://www.bilibili.com/video/BV1Y34y1z7uX)
-#  一、 STL部分
+##  一、 STL部分
 
-## 1.1 queue  （FIFO）
+### 1.1 queue  （FIFO）
 
-### 1.1.1 头文件
+#### 1.1.1 头文件
 
 使用该容器需要`#include<queue>`头文件
 
-### 1.1.2 定义
+#### 1.1.2 定义
 
 `queue<int> que;`//这个int可以更换成自己想要的数据
 
-### 1.1.3 基本操作
+#### 1.1.3 基本操作
 
 1.que.size()               返回队列元素数量
 
@@ -32,21 +34,21 @@
 
 6.que.back()              返回队尾
 
-### 1.1.4 应用
+#### 1.1.4 应用
 
 队列广泛引用在广度优先搜索（BFS）里、约瑟夫环问题等
 
-## 1.2 stack （FILO）
+### 1.2 stack （FILO）
 
-### 1.2.1 头文件
+#### 1.2.1 头文件
 
 使用该容器需要`#include<stack>`头文件
 
-### 1.2.2 定义 
+#### 1.2.2 定义 
 
 `stack<int> S;`
 
-### 1.2.3 基本操作
+#### 1.2.3 基本操作
 
 1.`S.size()`                返回栈里元素个数
 
@@ -58,17 +60,17 @@
 
 5.`S.top()`                返回栈顶
 
-### 1.2.4 应用
+#### 1.2.4 应用
 
 逆波兰表达式等
 
-## 1.3 priority_queue
+### 1.3 priority_queue
 
-### 1.3.1 头文件
+#### 1.3.1 头文件
 
 使用该容器需要`#include<priority_queue>`头文件
 
-### 1.3.2 定义
+#### 1.3.2 定义
 
 `priority_queue<int> que;`
 
@@ -93,7 +95,7 @@ priority_queue<Node> que;
 
 
 
-### 1.3.3 基本操作
+#### 1.3.3 基本操作
 
 1.que.size()               返回队列元素数量
 
@@ -105,13 +107,13 @@ priority_queue<Node> que;
 
 5.que.top()               返回队首
 
-### 1.3.4 应用
+#### 1.3.4 应用
 
 应用在一些贪心的算法上面，优化dijkstra复杂度等
 
 
 
-### 1.3.5 重载代码
+#### 1.3.5 重载代码
 
 ```cpp
 pq.push(item):添加元素 O(logn)
@@ -156,19 +158,19 @@ priority_queue<T3, vector<T3>,tmp> q3
 
 
 
-## 1.4 vector
+### 1.4 vector
 
-### 1.4.1 头文件
+#### 1.4.1 头文件
 
 使用该容器需要`#include<vector>`头文件
 
-### 1.4.2 定义和特点
+#### 1.4.2 定义和特点
 
 `vector<int> V;`
 
 可以理解为变长数组，对元素的访问以及使用等非常方便，但是当元素存储过多会造成常数过大
 
-### 1.4.3 基本操作
+#### 1.4.3 基本操作
 
 1. `v.push_back(item):`	向v后加一个元素O(1)
 2. `v.pop_back();`           删除v最后一个元素O(1)
@@ -186,25 +188,25 @@ priority_queue<T3, vector<T3>,tmp> q3
 14. `vt.erase(unique(vt.begin(), vt.end()), vt.end());`   去重操作
 15. `v.insert(v.begin()+4,3);` 在第五个元素前插入一个元素
 
-### 1.4.4 应用
+#### 1.4.4 应用
 
 应用十分广泛
 
 
 
-## 1.5 set
+### 1.5 set
 
-### 1.5.1 头文件
+#### 1.5.1 头文件
 
 使用该容器需要`#incluide<set>`头文件
 
-### 1.5.2 定义
+#### 1.5.2 定义
 
 `set<int> S`
 
 set就相当于是数学的集合，会对相同的元素进行去重处理并默认排序，和优先队列类似的，如果想自定义数据结构，那么需要写重载函数
 
-### 1.5.3 基本操作
+#### 1.5.3 基本操作
 
 1. `s.insert(item);`                                                 插入元素O(logn)
 2. `s.size();`                                                         获取元素的个数O(1)
@@ -218,7 +220,7 @@ set就相当于是数学的集合，会对相同的元素进行去重处理并�
 10. `iterator lower_bound( const key_type &key );` 返回一个迭代器，指向键值 >= key的第一个元素。
 11. `iterator upper_bound( const key_type &key );` 返回一个迭代器，指向键值 > key的第一个元素。
 
-### 1.5.4 重载代码
+#### 1.5.4 重载代码
 
 ```cpp
 struct T1{
@@ -257,23 +259,23 @@ int main(){
 
 
 
-## 1.6 unordered_set
+### 1.6 unordered_set
 
 这个其实就是不需要排序的set，就不用写重载函数了，其余操作和set相同
 
-## 1.7 map
+### 1.7 map
 
-### 1.5.1 头文件
+#### 1.5.1 头文件
 
 使用该容器需要`#include<map>`头文件
 
-### 1.5.2 定义
+#### 1.5.2 定义
 
 `map<int,int> mp;`
 
 注意的是map是一个键值对，是一个映射关系，你可以理解为帮你封装好了的hash表，通过键访问你的值
 
-### 1.5.3 基本操作
+#### 1.5.3 基本操作
 
 1. `mp.size();`获取元素个数O(1)
 2. `mp.empty();`判断是否为空O(1)
@@ -284,35 +286,35 @@ int main(){
 7. `mp[key]=tmp;`可以把键值对key---value中的value赋值为tmp,如果没有对应的键值对,则将该键值对插入到map中复杂度： O(logn)
 8. `mp.insert(make_pair(key,value));`在mp中插入键值对key----value。一般不这样用，想要插入键值对的话直接使用mp[key]=value即可，map已经对[]运算符重载过了.
 
-### 1.5.4 应用
+#### 1.5.4 应用
 
 应用在一些需要键值对应的地方
 
-## 1.8 unordered_map
+### 1.8 unordered_map
 
-### 1.8.1 头文件
+#### 1.8.1 头文件
 
 `#include<unordered_map>`
 
-### 1.8.2 和map区别
+#### 1.8.2 和map区别
 
 和上面类似，只不过内部变为无序，查找效率要稍微比map高一点点（内部是哈希表实现，而map是红黑树）
 
 
 
-## 1.9 pair
+### 1.9 pair
 
-### 1.9.1 头文件
+#### 1.9.1 头文件
 
 `#include <utility>`
 
-### 1.9.2 定义
+#### 1.9.2 定义
 
 `pair<int,int> P;`
 
 可以理解为一个只有两个元素的结构体
 
-### 1.9.3 基本使用
+#### 1.9.3 基本使用
 
 1. `pair<T1, T2> p1; `//创建一个空的pair对象（使用默认构造），它的两个元素分别是T1和T2类型，采用值初始化。
 2. `pair<T1, T2> p1(v1, v2);` //创建一个pair对象，它的两个元素分别是T1和T2类型，其中first成员初始化为v1，second成员初始化为v2。
@@ -322,23 +324,23 @@ int main(){
 6. `p1.first;` // 返回对象p1中名为first的公有数据成员。
 7. `p1.second;` // 返回对象p1中名为second的公有数据成员。
 
-### 1.9.4 应用场景
+#### 1.9.4 应用场景
 
 应用到坐标点的表示等
 
 
 
-## 1.10迭代器`iterator`
+### 1.10迭代器`iterator`
 
-### 1.10.1定义方法
+#### 1.10.1定义方法
 
 `容器类名::iterator 迭代器名;`
 
-### 1.10.2 使用
+#### 1.10.2 使用
 
 可以看作一个指针，支持自增和自减，但是不支持多位移动
 
-### 1.10.3 详细学习资料
+#### 1.10.3 详细学习资料
 
 [http://c.biancheng.net/view/338.html](http://c.biancheng.net/view/338.html)
 
@@ -346,15 +348,15 @@ int main(){
 
 
 
-## 1.10 string
+### 1.10 string
 
 
 
 
 
-# 二、Algorithm部分
+## 二、Algorithm部分
 
-## 2.1 sort
+### 2.1 sort
 
 排序函数，这里如果想定制化的话则需要手写cmp函数，和我们上面看的重载比较函数类似：
 
@@ -362,27 +364,27 @@ int main(){
 
 
 
-## 2.2 __gcd
+### 2.2 __gcd
 
 求解最大公因数的内置函数：`int c = __gcd(a,b);`
 
-## 2.3 max
+### 2.3 max
 
 参数是两个相同类型的数，然后返回一个最大值
 
-## 2.4 min
+### 2.4 min
 
 参数是两个相同类型的数，然后返回一个最小值
 
-## 2.5 abs
+### 2.5 abs
 
 返回该数的绝对值
 
-## 2.6 swap
+### 2.6 swap
 
 交换两数
 
-## 2.7 reverse
+### 2.7 reverse
 
 反转容器或者数组，容器的话需要添加迭代器，数组直接放地址
 
@@ -398,7 +400,7 @@ for(int i = 0;i < 3; ++i) printf("%d\n",a[i]);
 reverse(V.begin(),V.end())
 ```
 
-## 2.8 next_permutation
+### 2.8 next_permutation
 
 这个是一个全排列函数：
 
@@ -410,7 +412,7 @@ do{
 
 
 
-## 2.9 lower_bound
+### 2.9 lower_bound
 
 `lower_bound`(起始地址，结束地址，要查找的数值) 返回的是>=x的第一个数的地址。
 
@@ -419,7 +421,7 @@ do{
 - `lower_bound( begin,end,num)`：从数组的begin位置到end-1位置二分查找第一个大于或等于num的数字，找到返回该数字的地址，不存在则返回end。通过返回的地址减去起始地址begin,得到找到数字在数组中的下标。
 - `lower_bound( begin,end,num,greater())`:从数组的begin位置到end-1位置二分查找第一个小于或等于num的数字，找到返回该数字的地址，不存在则返回end。通过返回的地址减去起始地址begin,得到找到数字在数组中的下标。
 
-## 2.10 upper_bound
+### 2.10 upper_bound
 
 `upper_bound`(起始地址，结束地址，要查找的数值) 返回的是>x的第一个数的地址
 
@@ -433,7 +435,7 @@ do{
 
 
 
-# 训练题单
+## 三、训练题单
 
 [http://acm.mangata.ltd/training/61cff0d9aa36161f3c11f143](http://acm.mangata.ltd/training/61cff0d9aa36161f3c11f143)
 

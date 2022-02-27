@@ -5,58 +5,58 @@ repo_url: https://github.com/MangataTS/Algorithm
 site_name: Algorithm
 theme:
   features:
+    - navigation.instant
+    - navigation.tracking
     - navigation.tabs
+    - navigation.tabs.sticky
     - header.autohide
     - navigation.top
-    - content.code.annotate 
     - toc.integrate
+    - content.code.annotate 
+    - toc.follow
   icon:
      repo: fontawesome/brands/github-alt
   logo: logo.png
   name: material
   favicon: logo.png
-  features:
-    - navigation.tabs
   palette:
     primary: pink
     accent: deep purple
    #  favicon: attachment/portrait.png
   language: zh # 中文，解决中文搜索问题
-  features:
-    - navigation.expand 
-    - tabs 
 markdown_extensions: 
-  - attr_list # https://squidfunk.github.io/mkdocs-material/reference/images/
-  - pymdownx.tabbed  # https://squidfunk.github.io/mkdocs-material/reference/content-tabs/
-  - nl2br # newline-to-break 
+  - abbr
   - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
   - codehilite:
       guess_lang: false
       linenums: false
-  - toc:
-      permalink: true # heading anchor 
-      slugify: !!python/name:pymdownx.slugs.uslugify # 解决中文标题解析问题
-  - admonition
-  - codehilite:
-      guess_lang: true
-      linenums: true
-  - footnotes
-  - meta
-  - def_list
-  - pymdownx.arithmatex
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
-  - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_generator: !!python/name:pymdownx.emoji.to_png
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
   - pymdownx.inlinehilite
-  - pymdownx.magiclink
+  - pymdownx.keys
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences
-  - pymdownx.tasklist
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - pymdownx.tilde
 plugins:
   - search
@@ -71,16 +71,32 @@ plugins:
         - '.*\.(tmp|bin|tar)$'
 copyright: Copyright &copy; power by Kaptree
 
-markdown_extensions:
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
 extra_javascript:
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  
+nav:
+  - Home: index.md
+  - 语法基础: 
+    - 语法基础/0基础C语言速通.md
+  - 基础算法: 
+    - 基础算法/二分算法.md
+    - 基础算法/前缀和与差分.md
+  - 数据结构:
+    - 数据结构/并查集.md
+    - 数据结构/单调栈.md
+  - 图论:
+    - 图论/建图基础.md
+    - 图论/DFS和BFS.md
+    - 图论/最短路.md
+    - 图论/最小生成树.md
+  - 数论:
+    - 数论/基础数论.md
+  - 字符串:
+    - 字符串/KMP算法.md
+    - 字符串/Trie树.md
+  - 杂项:
+    - 杂项/位运算.md
+    - 杂项/STL和Algorithm.md
 
