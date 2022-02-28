@@ -16,4 +16,5 @@ jobs:
       - run: pip install mkdocs==1.2.3
       - run: pip install mkdocs-exclude
       - run: pip install mkdocs-roamlinks-plugin
+      - run: pip install git-revision-date-localized
       - run: mkdocs gh-deploy --force
