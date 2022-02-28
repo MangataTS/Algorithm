@@ -15,7 +15,7 @@ theme:
     - toc.follow
     - navigation.indexes
   icon:
-     repo: fontawesome/brands/github-alt
+    repo: fontawesome/brands/github-alt
   logo: logo.png
   name: material
   favicon: logo.png
