@@ -1,6 +1,6 @@
 # Home
 
-### Hi there 👋 I'm MangataTS <img align="right" src="https://github-readme-stats.vercel.app/api?username=MangataTS&show_icons=true&theme=dark">
+## Hi there 👋 I'm MangataTS <img align="right" src="https://github-readme-stats.vercel.app/api?username=MangataTS&show_icons=true&theme=dark">
 
 ![GitHub followers](https://img.shields.io/github/followers/MangataTS?style=social)   ![GitHub User's stars](https://img.shields.io/github/stars/MangataTS?style=social)
 
@@ -11,11 +11,11 @@
 - 📫 QQ交流群：[1055277728](https://jq.qq.com/?_wv=1027&k=Y1N8ePmm)
 - 😄 Blogs: [acmer.blog.csdn.net](https://acmer.blog.csdn.net/?type=blog)
 
-## &#x1f92b; Github Visitors
+## &#x1f92b; Algorithm Visitors
 
 
 [![Top Langs](https://profile-counter.glitch.me/MangataTS/count.svg)](https://mangatats.github.io/Algorithm)
 
-### 网站简介
+## 网站简介
 
 欢迎来到我的算法和数据结构学习笔记的一个小网站，在这里我将记录一些算法的个人理解以及题目集合，包括不限于各大OJ以及蓝桥杯、天梯赛、ICPC、CCPC等训练的题解。

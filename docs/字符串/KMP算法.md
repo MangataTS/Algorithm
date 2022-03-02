@@ -1,5 +1,10 @@
 # KMP算法
 
+## 前言
+配套视频：
+
+[www.bilibili.com/video/BV18f4y1L7Uh](https://www.bilibili.com/video/BV18f4y1L7Uh)
+
 KMP算法（也叫看猫片算法(bushi）是Knuth、Pratt 和 Morris 在 1977 年共同发布一个在线性时间(O(n+m))字符串查找或匹配算法，常用于在一个文本串 S 内查找一个模式串 P 的出现位置。
 
 ## 一、前缀和后缀
