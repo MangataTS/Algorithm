@@ -1,0 +1,117 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,body {
+  height: 100%;
+}
+
+body {
+  background-color: rgba(223, 223, 255, 0.39);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-container {
+  width: 80%;
+  max-width: 1000px;
+  max-height: 500px;
+  min-width: 600px;
+  background-color: white;
+  font-size: 0;
+  border-radius: 20px;
+  box-shadow: 0 0 50px 0 rgba(146, 146, 146, 0.63);
+}
+
+.main-container .container-item {
+  display: inline-block;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.main-container .img-container {
+  background-color: rgba(253, 216, 168, 0.692);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.main-container .text-container .code {
+  font-size: clamp(150px,20vw,200px);
+  font-family: 'Arial Narrow';
+  color: rgb(86, 86, 253);
+  font-weight: bolder;
+  text-align: center;
+}
+
+.main-container .text-container .msg {
+  font-size: 18px;
+  text-align: center;
+  font-weight: 200;
+  margin-bottom: 20px;
+}
+
+.main-container .text-container .action {
+  font-size: 15px;
+  font-weight: 200;
+  text-align: center;
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+
+ a:link { text-decoration: none}
+a {
+    /* 相对定位 */
+    position: relative;
+    width: 400px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 24px;
+    color: #fff;
+    /* 圆角属性 */
+    border-radius: 0px;
+    /* 背景渐变色 */
+    background-image: linear-gradient(to right, #03a9f4, #f441a5, #ffeb3b, #09a8f4);
+    /* 背景渐变色大小 */
+    background-size: 400%;
+    z-index: 1;
+	 animation: sun 8s infinite;
+}
+ 
+/* 下面设计 发光效果 */
+a::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    bottom: -5px;
+    left: -5px;
+    right: -5px;
+    border-radius: 50px;
+    /* 背景渐变色 */
+    background-image: linear-gradient(to right, #03a9f4, #f441a5, #ffeb3b, #09a8f4);
+    /* 背景渐变色大小 */
+    background-size: 400%;
+    /* 元素的位置 底层或者顶层  -值表示底层 + 值表示顶层 */
+    z-index: -1;
+    /* 设置模糊度 显示发光效果 */
+    filter: blur(50px);
+	animation: sun 8s infinite;
+}
+ 
+/* a:hover {
+    animation: sun 8s infinite;
+}
+a:hover::before {
+    animation: sun 8s infinite;
+} */
+ 
+@keyframes sun {
+    100% {
+        /* 背景位置 */
+        background-position: -400% 0;
+    }
+}
