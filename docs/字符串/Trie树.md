@@ -1,3 +1,5 @@
+![img](../image/字符串/Trie树/字数统计.png)
+
 # Trie树
 
 ## 前言

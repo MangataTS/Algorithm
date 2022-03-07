@@ -1,3 +1,5 @@
+![img](../image/图论/DFS和BFS/字数统计.png)
+
 # DFS和BFS
 
 ## 一、配套视频
