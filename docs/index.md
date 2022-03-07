@@ -6,7 +6,7 @@
 
 - 🔭 SWPU本科电子与计算机工程在读
 - 🌱 正在学习ACM/ICPC&OI相关算法
-- 👯 目前正在完善常用算法教学内容
+- 👯 目前正在完善常用[算法教学](https://mangatats.github.io/Algorithm)内容
 - ⚡ [追梦算法网](http://acm.mangata.ltd)の站长&维护者
 - 📫 QQ交流群：[1055277728](https://jq.qq.com/?_wv=1027&k=Y1N8ePmm)
 - 😄 Blogs: [acmer.blog.csdn.net](https://acmer.blog.csdn.net/?type=blog)
