@@ -15,8 +15,8 @@ jobs:
         with:
           python-version: 3.10.2
       - run: pip install mkdocs-material==8.1.4
-      - run: pip install mkdocs==1.2.3
+      - run: pip install mkdocs==1.2.4
       - run: pip install mkdocs-exclude
       - run: pip install mkdocs-roamlinks-plugin
       - run: pip install mkdocs-git-revision-date-localized-plugin
-      - run: mkdocs gh-deploy --clean
+      - run: mkdocs gh-deploy --force
