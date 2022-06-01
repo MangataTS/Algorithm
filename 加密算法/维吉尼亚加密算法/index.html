@@ -13,7 +13,7 @@
     
     
       
-        <title>凯撒密码 - Algorithm</title>
+        <title>维吉尼亚加密算法 - Algorithm</title>
       
     
     
@@ -61,6 +61,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -91,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              凯撒密码
+              维吉尼亚加密算法
             
           </span>
         </div>
@@ -955,21 +960,126 @@
               
   
                 
-<a href="https://github.com/MangataTS/Algorithm/edit/master/docs/加密算法/凯撒密码.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/MangataTS/Algorithm/edit/master/docs/加密算法/维吉尼亚加密算法.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-  <h1>凯撒密码</h1>
-
-
+<h1 id="_1">维吉尼亚加密算法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">一、简介<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><strong>维吉尼亚密码</strong>（又译 <strong>维热纳尔密码</strong> ）是使用一系列凯撒密码组成密码字母表的加密算法，属于 <strong>多表密码</strong> 的一种简单形式。</p>
+<p>维吉尼亚密码曾多次被发明。该方法最早记录在吉奥万·巴蒂斯塔·贝拉索（ <code>Giovan Battista Bellaso</code>）于1553年所著的书《吉奥万·巴蒂斯塔·贝拉索先生的密码》（意大利语：<code>La cifra del. Sig. Giovan Battista Bellaso</code>）中。然而，后来在19世纪时被误传为是法国外交官布莱斯·德·维吉尼亚（<code>Blaise De Vigenère</code>）所创造，因此现在被称为“维吉尼亚密码”。</p>
+<p>维吉尼亚密码以其简单易用而著称，同时初学者通常难以破解，因而又被称为“不可破译的密码”（法语：<code>le chiffre indéchiffrable</code>）。这也让很多人使用维吉尼亚密码来加密的目的就是为了将其破解。</p>
+<h2 id="_3">二、原理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p><code>Vigengere</code>密码使用一个词组作为密钥，第一个密钥字母加密明文的第一个字母，第二个密钥字母加密明文的第二个字母，等所有密钥字母使用完后，密钥又再循环使用。</p>
+<ul>
+<li>第一步可以先将密钥的长度拓展到（或者缩减到）和明文 <strong>长度一样</strong></li>
+<li>第二步开始加密，加密的方式一般分为两种<ul>
+<li>①公式加密</li>
+<li>②查表加密</li>
+</ul>
+</li>
+</ul>
+<h3 id="21">2.1 公式加密<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>对于第一个公式加密，我们可以如下操作：
+加密：<span class="arithmatex">\(C_i = P_i + K_i (mod \ 26)\)</span>
+解密：<span class="arithmatex">\(P_i = C_i - K_i (mod \ 26)\)</span>
+其中的 <span class="arithmatex">\(C_i\)</span> 表示的是密文的第 <span class="arithmatex">\(i\)</span> 个字母， <span class="arithmatex">\(P_i\)</span> 表示的是明文的第 <span class="arithmatex">\(i\)</span> 个字母， <span class="arithmatex">\(K_i\)</span> 表示的是密钥的第 <span class="arithmatex">\(i\)</span> 个字母</p>
+<p>例如：</p>
+<p><div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a>P = vigenere
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a>K = key
+</code></pre></div>
+(a的位置对应的是0，其余的以此类推)
+得到：
+| <span class="arithmatex">\(P_i\)</span> | v| i|g|e|n|e|r|e|
+|---|---|---|---|---|---|---|---|---|
+| <span class="arithmatex">\(K_i\)</span>| k|e|y|k|e|y|k|e|
+| <span class="arithmatex">\(C_i\)</span> |f|m|e|o|r|c|a|i|</p>
+<h3 id="22">2.2 查表加密<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<p>对于每一种加密我们在一个字母表中找到我们 <span class="arithmatex">\(P_i\)</span> 和 <span class="arithmatex">\(K_i\)</span> 对应的 <span class="arithmatex">\(C_i\)</span> 即可，我们可以先用一个二维数组来存储这个字母表，然后我们将每一个字母转化为一个数字，作为查找的下标，然后就能轻松的实现加密的过程，解密的话就反过来就好</p>
+<p>例如：
+给定字母表：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/4c6553398eb84838966434994a6b8cb6.png" /></p>
+<p>给出查询的明文 <code>SWPUACM</code> 然后给出密钥：<code>MANGATA</code>
+那么我们就能构造出来</p>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(P_i\)</span></th>
+<th>S</th>
+<th>W</th>
+<th>P</th>
+<th>U</th>
+<th>A</th>
+<th>C</th>
+<th>M</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(K_i\)</span></td>
+<td>M</td>
+<td>A</td>
+<td>N</td>
+<td>G</td>
+<td>A</td>
+<td>T</td>
+<td>A</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(C_i\)</span></td>
+<td>E</td>
+<td>W</td>
+<td>C</td>
+<td>A</td>
+<td>A</td>
+<td>V</td>
+<td>M</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">三、例题<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>题目链接： <a href="http://acm.mangata.ltd/p/P2030">http://acm.mangata.ltd/p/P2030</a></p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/ce04b75d2b3f49eea520c10f60892895.png" /></p>
+<h2 id="_5">四、代码<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="cp">#include</span><span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="cp">#define ll long long</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="cp">#define mod 26</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="cp">#define endl &quot;\n&quot;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="cp">#define PII pair&lt;int,int&gt;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="cp">#define INF 0x3f3f3f3f</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><a href="#__codelineno-1-8"><span class="linenos" data-linenos=" 8 "></span></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><a href="#__codelineno-1-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="kt">void</span><span class="w"> </span><span class="nf">Vigenere</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">P</span><span class="p">,</span><span class="n">string</span><span class="w"> </span><span class="n">K</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><a href="#__codelineno-1-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><a href="#__codelineno-1-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">len1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="n">len2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">K</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><a href="#__codelineno-1-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">len1</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><a href="#__codelineno-1-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="sc">&#39;A&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">K</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">len2</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">))</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">mod</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><a href="#__codelineno-1-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">        </span><span class="n">C</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="kt">char</span><span class="p">(</span><span class="sc">&#39;A&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pos</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><a href="#__codelineno-1-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><a href="#__codelineno-1-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;The Vigenere ciphertext = &quot;</span><span class="o">&lt;&lt;</span><span class="n">C</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><a href="#__codelineno-1-17"><span class="linenos" data-linenos="17 "></span></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><a href="#__codelineno-1-18"><span class="linenos" data-linenos="18 "></span></a>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><a href="#__codelineno-1-19"><span class="linenos" data-linenos="19 "></span></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a><a href="#__codelineno-1-20"><span class="linenos" data-linenos="20 "></span></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a><a href="#__codelineno-1-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">P</span><span class="p">,</span><span class="n">K</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a><a href="#__codelineno-1-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;Please input the plaintext&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="c1">//Encryption key</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a><a href="#__codelineno-1-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">    </span><span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">P</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a><a href="#__codelineno-1-24"><span class="linenos" data-linenos="24 "></span></a><span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;Please input the Encryption key&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a><a href="#__codelineno-1-25"><span class="linenos" data-linenos="25 "></span></a><span class="w">    </span><span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">K</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a><a href="#__codelineno-1-26"><span class="linenos" data-linenos="26 "></span></a><span class="w">    </span><span class="n">transform</span><span class="p">(</span><span class="n">P</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="n">P</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="n">P</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="o">::</span><span class="n">toupper</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a><a href="#__codelineno-1-27"><span class="linenos" data-linenos="27 "></span></a><span class="w">    </span><span class="n">transform</span><span class="p">(</span><span class="n">K</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="n">K</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="n">K</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="o">::</span><span class="n">toupper</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-28" name="__codelineno-1-28"></a><a href="#__codelineno-1-28"><span class="linenos" data-linenos="28 "></span></a><span class="w">    </span><span class="n">Vigenere</span><span class="p">(</span><span class="n">P</span><span class="p">,</span><span class="n">K</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-29" name="__codelineno-1-29"></a><a href="#__codelineno-1-29"><span class="linenos" data-linenos="29 "></span></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-30" name="__codelineno-1-30"></a><a href="#__codelineno-1-30"><span class="linenos" data-linenos="30 "></span></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-19 14:50:26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-06-01 16:20:36</span>
       
     
   </small>

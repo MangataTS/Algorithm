@@ -1,0 +1,1181 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../logo.png">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-8.1.4">
+    
+    
+      
+        <title>AES加密算法 - Algorithm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bb3983ee.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aes" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Algorithm" class="md-header__button md-logo" aria-label="Algorithm" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Algorithm
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AES加密算法
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/MangataTS/Algorithm/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/0%E5%9F%BA%E7%A1%80C%E8%AF%AD%E8%A8%80%E9%80%9F%E9%80%9A/" class="md-tabs__link">
+        语法基础
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/" class="md-tabs__link">
+        基础算法
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="md-tabs__link">
+        数据结构
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%9B%BE%E8%AE%BA/%E5%BB%BA%E5%9B%BE%E5%9F%BA%E7%A1%80/" class="md-tabs__link">
+        图论
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E6%95%B0%E8%AE%BA/%E5%9F%BA%E7%A1%80%E6%95%B0%E8%AE%BA/" class="md-tabs__link">
+        数论
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%AD%97%E7%AC%A6%E4%B8%B2/KMP%E7%AE%97%E6%B3%95/" class="md-tabs__link">
+        字符串
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01%E8%83%8C%E5%8C%85/" class="md-tabs__link">
+        动态规划
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E6%9D%82%E9%A1%B9/%E4%BD%8D%E8%BF%90%E7%AE%97/" class="md-tabs__link">
+        杂项
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Algorithm" class="md-nav__button md-logo" aria-label="Algorithm" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    Algorithm
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/MangataTS/Algorithm/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          语法基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="语法基础" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          语法基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/0%E5%9F%BA%E7%A1%80C%E8%AF%AD%E8%A8%80%E9%80%9F%E9%80%9A/" class="md-nav__link">
+        0基础C语言速通
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          基础算法
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="基础算法" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          基础算法
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/" class="md-nav__link">
+        前缀和与差分
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/" class="md-nav__link">
+        双指针
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        二分算法
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          数据结构
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="数据结构" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          数据结构
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="md-nav__link">
+        并查集
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%8D%95%E8%B0%83%E6%A0%88/" class="md-nav__link">
+        单调栈
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          图论
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="图论" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          图论
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E8%AE%BA/%E5%BB%BA%E5%9B%BE%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        建图基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E8%AE%BA/DFS%E5%92%8CBFS/" class="md-nav__link">
+        DFS和BFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E8%AE%BA/%E6%9C%80%E7%9F%AD%E8%B7%AF/" class="md-nav__link">
+        最短路
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E8%AE%BA/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" class="md-nav__link">
+        最小生成树
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          数论
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="数论" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          数论
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E8%AE%BA/%E5%9F%BA%E7%A1%80%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        基础数论
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          字符串
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="字符串" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          字符串
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AD%97%E7%AC%A6%E4%B8%B2/KMP%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        KMP算法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AD%97%E7%AC%A6%E4%B8%B2/Trie%E6%A0%91/" class="md-nav__link">
+        Trie树
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          动态规划
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="动态规划" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          动态规划
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01%E8%83%8C%E5%8C%85/" class="md-nav__link">
+        01背包
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/" class="md-nav__link">
+        完全背包
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          杂项
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="杂项" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          杂项
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9D%82%E9%A1%B9/%E4%BD%8D%E8%BF%90%E7%AE%97/" class="md-nav__link">
+        位运算
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9D%82%E9%A1%B9/STL%E5%92%8CAlgorithm/" class="md-nav__link">
+        STL和Algorithm
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+  
+                
+<a href="https://github.com/MangataTS/Algorithm/edit/master/docs/加密算法/AES加密算法.md" title="编辑此页" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="aes">AES加密算法<a class="headerlink" href="#aes" title="Permanent link">&para;</a></h1>
+<h2 id="_1">一、简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><code>AES</code> 算法用来替代原先的<code>DES</code>（ <span class="arithmatex">\(Data Encryption Standard\)</span> ），已经被多方分析且广为全世界所使用。经过五年的甄选流程，高级加密标准由美国国家标准与技术研究院 （<code>NIST</code>）于 <span class="arithmatex">\(2001\)</span> 年 <span class="arithmatex">\(11\)</span> 月 <span class="arithmatex">\(26\)</span> 日发布于 <span class="arithmatex">\(FIPS PUB 197\)</span> ，并在 <span class="arithmatex">\(2002\)</span> 年 <span class="arithmatex">\(5\)</span> 月 <span class="arithmatex">\(26\)</span> 日成为有效的标准。 <span class="arithmatex">\(2006\)</span> 年，高级加密标准已然成为对称密钥加密中最流行的算法之一 。
+该算法为比利时密码学家 <span class="arithmatex">\(Joan Daemen和Vincent Rijmen\)</span> 所设计，结合两位作者的名字，以 <span class="arithmatex">\(Rijdael\)</span> 之名命之，投稿高级加密标准的甄选流程。（ <span class="arithmatex">\(Rijdael\)</span> 的发音近于 " <span class="arithmatex">\(Rhine doll\)</span> "。）</p>
+<h2 id="_2">二、原理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>先说明一下无论是明文还是密钥（密钥可以是 <span class="arithmatex">\(192\)</span> 、 <span class="arithmatex">\(256\)</span>  位，我们这里只考虑 <span class="arithmatex">\(128\)</span> 位的情况）还是密文都是 <span class="arithmatex">\(128\)</span> 位一组的，也就是16个字节，那么我们就可以用一个 <span class="arithmatex">\(4\times 4\)</span> 的矩阵来表示这个数据。</p>
+<p>大概的流程可以先看一下这个流程图：（建议看完下面的介绍后再回过来看一下）
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/8a87462655ae414587627ac9fc161ff7.png" /></p>
+<h3 id="21">2.1 明文加密流程<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<ul>
+<li>初始变换（其实就是 <strong>轮密钥加</strong> 操作）</li>
+<li>九轮轮函数操作<ul>
+<li>字节代换（ <span class="arithmatex">\(SubBytes\)</span> ）</li>
+<li>行位移（ <span class="arithmatex">\(ShiftRows\)</span> ）</li>
+<li>列混淆 （ <span class="arithmatex">\(MixColumns\)</span> ）</li>
+<li>轮密钥加（ <span class="arithmatex">\(AddRoundKey\)</span> ）</li>
+</ul>
+</li>
+<li>最终轮运算（实际上是 <strong>除去</strong> 列混淆的轮操作函数）</li>
+</ul>
+<p>如图：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/cd49c7eb4a774947913c737608aa5eb0.png" /></p>
+<h3 id="22">2.2 子密钥生成流程<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<p>我们的初始密钥也是 <span class="arithmatex">\(128\)</span> 位的，那么我们以 <strong>一列</strong> 作为一个单位进行变化，每新增一个子密钥，我们所谓的列的数量就增加 <span class="arithmatex">\(4\)</span> 于是密钥拓展的核心就是：</p>
+<ul>
+<li>如果当前拓展的列 <span class="arithmatex">\(i\)</span> 不是 <span class="arithmatex">\(4\)</span> 的倍数，那么第 <span class="arithmatex">\(i\)</span> 列由如下等式确定：（其中 <span class="arithmatex">\(W[i]\)</span> 表示的就是第 <span class="arithmatex">\(i\)</span> 列的数据）
+$$
+W[i]=W[i-4]  Xor  W[i-1]
+$$</li>
+<li>如果当前拓展的列 <span class="arithmatex">\(i\)</span> 是 <span class="arithmatex">\(4\)</span> 的倍数，那么第 <span class="arithmatex">\(i\)</span> 列由如下等式确定：
+$$
+W[i]=W[i-4]  Xor  T(W[i-1])
+$$</li>
+</ul>
+<p>关于这个 <span class="arithmatex">\(T\)</span> 函数，我们下面仔细讲解</p>
+<h3 id="23">2.3 字节代换<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<p>一般来说我们会给一个 <span class="arithmatex">\(16\times 16\)</span> 的 <span class="arithmatex">\(S\)</span> 盒子，然后我们将每一个字节的前 <span class="arithmatex">\(4\)</span> 位（转化为16进制）作为 <span class="arithmatex">\(X\)</span> 轴的坐标，然后后 <span class="arithmatex">\(4\)</span> 位作为 <span class="arithmatex">\(Y\)</span> 轴的坐标，然后进行一个值的替换，最终我们将所有字节都替换完成即可</p>
+<p>这里借用一个图：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/922858eaffc54f44b35eec4a1c0a2e36.png" /></p>
+<h3 id="24">2.4 行位移<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
+<p>此时我们需要将每一行数据想象成一个环形</p>
+<ul>
+<li>对于第一行，我们保持不变</li>
+<li>对于第二行，我们向左循环移动 <span class="arithmatex">\(1\)</span> 个字节</li>
+<li>对于第三行，我们向左循环移动 <span class="arithmatex">\(2\)</span> 个字节</li>
+<li>对于第四行，我们向左循环移动 <span class="arithmatex">\(3\)</span> 个字节</li>
+</ul>
+<p>可以参考下图：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/7aa762672f714310abea68d033321961.png" /></p>
+<h3 id="25">2.5 列混淆（混合）<a class="headerlink" href="#25" title="Permanent link">&para;</a></h3>
+<p>我们将会给当前的这个矩阵 <strong>左乘</strong> 一个 <strong>指定矩阵</strong> 但是注意的是这里的矩阵乘法不是普通意义上的，而是有限域 <span class="arithmatex">\(GF(2^8)\)</span> 上的乘法，我们知道矩阵的乘法是左边的行乘上右边的列，那么对于每一个字节而言，都有 <span class="arithmatex">\(8\)</span> 位，在有限域的乘法中，乘法变为了多项式乘法，例如：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/515deb17ef0b47b3b3cf1b09b7b7d202.png" />
+然后加法变成了异或运算，例如，我们现在左边矩阵第一行的元素都是 <span class="arithmatex">\(a_i\)</span> ，右边的矩阵元素都是 <span class="arithmatex">\(b_i\)</span> ，顺序如下：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/4c40f53189aa4c7fa38d489fb6f70c39.png" />
+B矩阵同理，那么我们想算出新矩阵 <span class="arithmatex">\(C\)</span> 的第一个字节的值就为：</p>
+<p>$$
+c_1 = (a_1 \times b_1) ⊕ (a_2 \times b_5) ⊕ (a_3 \times b_9) ⊕ (a_4 \times a_{13})
+$$
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/3dcf01d0660942b6ba63b5825d08ae5e.png" /></p>
+<h3 id="26">2.6 轮密钥加变换<a class="headerlink" href="#26" title="Permanent link">&para;</a></h3>
+<p>轮密钥加就是直接将一个 <strong>指定矩阵</strong> 和当前的待加密矩阵进行对每个字节 <strong>按位异或</strong> 操作即可</p>
+<p>大概操作如图：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/289271b94b70427d8cf92e562019e40b.png" /></p>
+<h3 id="27-t">2.7 密钥拓展中的T函数<a class="headerlink" href="#27-t" title="Permanent link">&para;</a></h3>
+<p><span class="arithmatex">\(T\)</span> 函数由三个部分组成： <strong>字循环</strong> 、 <strong>字节代换</strong> 、 <strong>轮常量异或</strong></p>
+<h4 id="271">2.7.1 字循环<a class="headerlink" href="#271" title="Permanent link">&para;</a></h4>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/2b7a9ce53f18477f973148ce3180e345.png" /></p>
+<h3 id="272">2.7.2 字节代换<a class="headerlink" href="#272" title="Permanent link">&para;</a></h3>
+<p>这里的代换和上面提到的是一样的，就是 <span class="arithmatex">\(S\)</span> 盒子代换，前 <span class="arithmatex">\(4\)</span> 位 作为查找的 <span class="arithmatex">\(X\)</span> 坐标，后 <span class="arithmatex">\(4\)</span> 位作为查找的 <span class="arithmatex">\(Y\)</span> 坐标，然后再盒子（字节表）中查找替换即可</p>
+<h3 id="273">2.7.3 轮常量异或<a class="headerlink" href="#273" title="Permanent link">&para;</a></h3>
+<p>将前两步的结果同轮常量 <span class="arithmatex">\(Rcon[j]\)</span> 进行异或操作，其中的 <span class="arithmatex">\(J\)</span> 表示的是轮数，注意的是这里的轮常量是 <strong>给定的</strong> ，这样我们会发现，如果说当前的列数是 <span class="arithmatex">\(4\)</span> 的倍数的时候，我们需要进行 <strong>两次</strong> 列异或操作</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/69c9668e12e14a7fbcdee6b6f03c68b4.png" /></p>
+<h2 id="_3">三、优缺点<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="31">3.1 优点<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<ul>
+<li>安全性高，稳定的数学基础、没有算法弱点、算法抗密码分析强度高</li>
+<li>性能好，能在多个平台上以较快的速度实现</li>
+<li>存储空间小，不能占用大量的存储空间和内存</li>
+<li>灵活性、硬件、软件适应性、算法的简单性等</li>
+<li>很好的抵抗差分密码分析及线性密码分析的能力。</li>
+<li>AES的密钥长度比DES大，它也可设定为32比特的任意倍数，最小值为128比特，最大值为256比特，所以用穷举法是不可能破解的。</li>
+</ul>
+<h3 id="32">3.2 缺点<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p>目前尚未存在对AES 算法完整版的成功攻击，但已经提出对其简化算法的攻击。</p>
+<h2 id="des">四、对比DES<a class="headerlink" href="#des" title="Permanent link">&para;</a></h2>
+<h3 id="41">4.1 相同之处<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<ul>
+<li>两者的轮函数都是由三部分构成，非线性层、线性混合层、子密钥异或，只不过顺序不同</li>
+<li><code>AES</code>的子密钥异或对应于<code>DES</code>的 <span class="arithmatex">\(S\)</span> 盒子之前的子密钥异或</li>
+<li><code>AES</code>的列混淆运算的目的是为了让不同的字节相互影响，而<code>DES</code>中<code>F</code>函数的输出于左边一半数据相加也有类似的效果</li>
+<li><code>AES</code>的非线性运算是字节代替（<code>ByteSub</code>），对应于<code>DES</code>中的非线性运算 <span class="arithmatex">\(S\)</span> 盒子</li>
+<li>行位移运算保证了每一行的字节不仅仅影响其他行对应的字节，而且影响其他行所有的字节，这与 <code>DES</code> 中的置换 <span class="arithmatex">\(IP\)</span> 相似</li>
+</ul>
+<h3 id="42">4.2 不同之处<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>AES</code> 的密钥长度（ <span class="arithmatex">\(128\)</span> 位、 <span class="arithmatex">\(192\)</span> 位、 <span class="arithmatex">\(256\)</span> 位）是可变的，而 <code>DES</code> 的密钥固定长度为 <span class="arithmatex">\(56\)</span> 位</li>
+<li><code>DES</code> 是面向比特运算的，而 <code>AES</code> 是面向字节运算的</li>
+<li><code>AES</code>的加密运算和解密运算不一致，因而加密器不能同时作为解密器，而<code>DES</code>则无此限制</li>
+</ul>
+<h2 id="_4">五、代码实现<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>留坑（但是感觉不会填，后面看情况吧）</p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-06-01 16:20:36</span>
+      
+    
+  </small>
+</div>
+
+              
+  <!-- Giscus -->
+  <h2 id="__comments">评论</h2>
+  <!-- Replace with generated snippet -->
+  <script src="https://giscus.app/client.js"
+        data-repo="MangataTS/Algorithm"
+        data-repo-id="R_kgDOGpOt2Q"
+        data-category="General"
+        data-category-id="DIC_kwDOGpOt2c4CN6ks"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark") 
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; power by Kaptree
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "header.autohide", "navigation.top", "toc.integrate", "content.code.annotate", "toc.follow", "navigation.indexes"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "search": "../../assets/javascripts/workers/search.361d90f1.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.289a2a4b.min.js"></script>
+      
+        <script src="../../javascripts/cheat.js"></script>
+      
+        <script src="../../javascripts/baidu-tongji.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
