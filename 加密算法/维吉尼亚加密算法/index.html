@@ -1547,12 +1547,46 @@
 <p><div class="highlight"><pre><span></span><code>P = vigenere
 K = key
 </code></pre></div>
-(a的位置对应的是0，其余的以此类推)
-得到：
-| <span class="arithmatex">\(P_i\)</span> | v| i|g|e|n|e|r|e|
-|---|---|---|---|---|---|---|---|---|
-| <span class="arithmatex">\(K_i\)</span>| k|e|y|k|e|y|k|e|
-| <span class="arithmatex">\(C_i\)</span> |f|m|e|o|r|c|a|i|</p>
+(a的位置对应的是0，其余的以此类推)得到：</p>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(P_i\)</span></th>
+<th>v</th>
+<th>i</th>
+<th>g</th>
+<th>e</th>
+<th>n</th>
+<th>e</th>
+<th>r</th>
+<th>e</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(K_i\)</span></td>
+<td>k</td>
+<td>e</td>
+<td>y</td>
+<td>k</td>
+<td>e</td>
+<td>y</td>
+<td>k</td>
+<td>e</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(C_i\)</span></td>
+<td>f</td>
+<td>m</td>
+<td>e</td>
+<td>o</td>
+<td>r</td>
+<td>c</td>
+<td>a</td>
+<td>i</td>
+</tr>
+</tbody>
+</table>
 <h3 id="22">2.2 查表加密<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
 <p>对于每一种加密我们在一个字母表中找到我们 <span class="arithmatex">\(P_i\)</span> 和 <span class="arithmatex">\(K_i\)</span> 对应的 <span class="arithmatex">\(C_i\)</span> 即可，我们可以先用一个二维数组来存储这个字母表，然后我们将每一个字母转化为一个数字，作为查找的下标，然后就能轻松的实现加密的过程，解密的话就反过来就好</p>
 <p>例如：
@@ -1637,7 +1671,7 @@ K = key
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 12:08:00</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 12:09:44</span>
       
     
   </small>
