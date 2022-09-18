@@ -89,7 +89,7 @@ copyright: Copyright &copy; power by Kaptree
 extra_javascript:
   - 'javascripts/cheat.js'
   - 'javascripts/mathjax.js'
-  - 'javascripts/TTMathJax.js'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
   #- javascripts/MathJaxTex.js
   #- https://polyfill.io/v3/polyfill.min.js?features=es6
   #- https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
