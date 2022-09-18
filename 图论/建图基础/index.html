@@ -1614,19 +1614,19 @@
 <p>大家都知道，vector是一个变长数组的容器，它会根据你的需求来分配对应的空间，所以我们就可以根据这个来建图</p>
 <p>我们先定义一个结构体，这个结构体要包含哪些信息呢：终点信息、边权值</p>
 <p>那么我们就能写出来了：</p>
-<div class="highlight"><span class="filename">C++</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">struct</span><span class="w"> </span><span class="nc">Edge</span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="n">w</span><span class="p">;</span><span class="c1">//v表示的是终点、w表示的是起点到重点的权值</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a><span class="p">};</span><span class="w"></span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a><span class="n">vector</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;</span><span class="n">E</span><span class="p">[</span><span class="n">N</span><span class="p">];</span><span class="c1">//这个N是根据你的顶点的大小来决定的</span>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Edge</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="n">w</span><span class="p">;</span><span class="c1">//v表示的是终点、w表示的是起点到重点的权值</span>
+<span class="p">};</span><span class="w"></span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;</span><span class="n">E</span><span class="p">[</span><span class="n">N</span><span class="p">];</span><span class="c1">//这个N是根据你的顶点的大小来决定的</span>
 </code></pre></div>
 <p>这样一来我们发现，我们也能维护这个图<code>push_back(node)</code></p>
 <h3 id="42">4.2使用原生数组<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
 <p>由于数组不能是变长的，有些时候又因为点不多，但是都挺大，造成了数组空间不够，我们因此就能想到链表的结构来维护这个图，于是你就得到了下面这个结构体</p>
-<div class="highlight"><span class="filename">C++</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">struct</span><span class="w"> </span><span class="nc">Edge</span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="n">w</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">Edge</span><span class="o">*</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos="4 "></span></a><span class="p">};</span><span class="w"></span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos="5 "></span></a><span class="n">Edge</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">N</span><span class="p">];</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Edge</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="n">w</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">Edge</span><span class="o">*</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="n">Edge</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">N</span><span class="p">];</span><span class="w"></span>
 </code></pre></div>
 <p>这样每一个点就是一条链表，这样我们也能很好的维护这个图</p>
 <h2 id="_6">五、链式前向星<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
@@ -1714,22 +1714,22 @@
 <p>这个建图的方法能帮我们优化后面要学的DFS和BFS，但是仅仅是这样就足够了吗？答案显然是不够，我们可以学到一种更优的建图方法： <strong>链式前向星</strong> </p>
 <h3 id="52">5.2链式前向星<a class="headerlink" href="#52" title="Permanent link">&para;</a></h3>
 <p>我们根据前面所学的启发可以想到建立一种新的边的结构体</p>
-<div class="highlight"><span class="filename">C++</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">struct</span><span class="w"> </span><span class="nc">Edge</span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">last</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">to</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos="5 "></span></a><span class="p">};</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Edge</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">last</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">to</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 </code></pre></div>
 <p><strong>其中<code>edge[i].to</code>表示第<span class="arithmatex">\(i\)</span>条边的终点,<code>edge[i].last</code>表示与第<span class="arithmatex">\(i\)</span>条边同起点的上一条边的存储位置,<code>edge[i].w</code>为边权值.</strong></p>
 <p>另外受到前向星的启发，我们还有一个head数组，它是用来表示以<span class="arithmatex">\(i\)</span>为起点的 <strong>第一条边存储</strong> 的位置,实际上你会发现这里的第一条边存储的位置其实在以<span class="arithmatex">\(i\)</span>为起点的所有边的 <strong>最后输入的那个编号</strong> .</p>
 <p>我们将head数组初始化为-1或者0，<code>cnt</code>初始化为0，<code>cnt</code>表示的是当前加的边数，然后对它不断地更新操作，很显然我们能得到这样地一个加边地操作</p>
-<div class="highlight"><span class="filename">C++</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a><span class="kt">void</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos="2 "></span></a><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">    </span><span class="n">edge</span><span class="p">[</span><span class="n">cnt</span><span class="p">].</span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="p">;</span><span class="c1">//更改边权</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">    </span><span class="n">edge</span><span class="p">[</span><span class="n">cnt</span><span class="p">].</span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">;</span><span class="c1">//更改下一个点的位置</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos="5 "></span></a><span class="w">    </span><span class="n">edge</span><span class="p">[</span><span class="n">cnt</span><span class="p">].</span><span class="n">last</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">[</span><span class="n">u</span><span class="p">];</span><span class="c1">//记录上一个以u为终点的边的位置</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a><a href="#__codelineno-3-6"><span class="linenos" data-linenos="6 "></span></a><span class="w">    </span><span class="n">head</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cnt</span><span class="o">++</span><span class="p">;</span><span class="c1">//更新一下head数组</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a><a href="#__codelineno-3-7"><span class="linenos" data-linenos="7 "></span></a><span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">edge</span><span class="p">[</span><span class="n">cnt</span><span class="p">].</span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="p">;</span><span class="c1">//更改边权</span>
+<span class="w">    </span><span class="n">edge</span><span class="p">[</span><span class="n">cnt</span><span class="p">].</span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">;</span><span class="c1">//更改下一个点的位置</span>
+<span class="w">    </span><span class="n">edge</span><span class="p">[</span><span class="n">cnt</span><span class="p">].</span><span class="n">last</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">[</span><span class="n">u</span><span class="p">];</span><span class="c1">//记录上一个以u为终点的边的位置</span>
+<span class="w">    </span><span class="n">head</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cnt</span><span class="o">++</span><span class="p">;</span><span class="c1">//更新一下head数组</span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>还是用上面的图，我们就能得到如下的边权关系</p>
 <table>
@@ -1780,8 +1780,8 @@
 </table>
 <p>head[i]就是保存的最后的那条边的编号、这个链式前向星在遍历图的时候是倒着遍历的，所以我们用其中一个成员last表示上一个节点的位置，这样对图也不会有什么影响</p>
 <p>所以我们就能得到一个遍历的方式：</p>
-<div class="highlight"><span class="filename">C++</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">head</span><span class="p">[</span><span class="n">u</span><span class="p">];</span><span class="n">i</span><span class="o">!=</span><span class="mi">-1</span><span class="p">;</span><span class="n">i</span><span class="o">=</span><span class="n">edge</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">last</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos="2 "></span></a><span class="c1">//中间那个循环判断也可以写成~i，不懂得同学可以去了解一下负数补码</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">head</span><span class="p">[</span><span class="n">u</span><span class="p">];</span><span class="n">i</span><span class="o">!=</span><span class="mi">-1</span><span class="p">;</span><span class="n">i</span><span class="o">=</span><span class="n">edge</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">last</span><span class="p">)</span><span class="w"></span>
+<span class="c1">//中间那个循环判断也可以写成~i，不懂得同学可以去了解一下负数补码</span>
 </code></pre></div>
 
   <hr>
