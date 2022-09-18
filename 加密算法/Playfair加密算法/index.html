@@ -1525,7 +1525,7 @@
 <p>它依据一个 <span class="arithmatex">\(5\times 5\)</span> 的正方形组成的密码表来编写，密码表里排列有25个字母。如果一种语言字母超过 <span class="arithmatex">\(25\)</span> 个，可以去掉使用频率最少的一个。如，法语一般去掉w或k，德语则是把i和j合起来当成一个字母看待。英语中z使用最少，可以去掉它。</p>
 <p>下面是其加密规则：</p>
 <ol>
-<li>将 <strong>密钥（关键字）</strong> 除去重复出现的字母，将剩下的字母逐个逐个加入 <span class="arithmatex">\(5 \times 5\)</span> 的矩阵内，剩下的空间由未加入的英文字母依 <span class="arithmatex">\(a-z \ (A-Z)\)</span> 的顺序加入。注意，将 <span class="arithmatex">\(q \ (Q)\)</span> 去除，且将 <span class="arithmatex">\(i\)</span> 和 <span class="arithmatex">\(j\)</span> 视作同一字 （注意这里为了简化我们的操作，这里的<strong>密钥字符串</strong>保证 <strong>不存在</strong> 字母 <code>q  (Q)</code>，但是密钥矩阵是存在字母 <code>q</code> 的 ,为了统一流程是我们将<strong>所有的</strong>字母 <code>j</code>替换为 字母<code>i</code>）</li>
+<li>将 <strong>密钥（关键字）</strong> 除去重复出现的字母，将剩下的字母逐个逐个加入 <span class="arithmatex">\(5 \times 5\)</span> 的矩阵内，剩下的空间由未加入的英文字母依 <span class="arithmatex">\(a-z \ (A-Z)\)</span> 的顺序加入。注意，将 <span class="arithmatex">\(q \ (Q)\)</span> 去除，且将 <span class="arithmatex">\(i\)</span> 和 <span class="arithmatex">\(j\)</span> 视作同一字 （注意这里为了简化我们的操作，这里的 <strong>密钥字符串</strong> 保证 <strong>不存在</strong> 字母 <code>q  (Q)</code>，但是密钥矩阵是存在字母 <code>q</code> 的 ,为了统一流程是我们将<strong>所有的</strong>字母 <code>j</code>替换为 字母<code>i</code>）</li>
 <li>将要加密的明文分成两个一组。若组内的字母相同，将 <span class="arithmatex">\((q)\ Q\)</span>加到该组的 <strong>第一个字母</strong> 后，重新分组。若剩下一个字，也加入 <span class="arithmatex">\(q\ (Q)\)</span> （例如：<code>eec</code>分组为： <code>eq ec</code>）</li>
 <li>在加密的过程中，我们从前往后挑选出一组字母，并找出这一组中两个字母的位置：</li>
 <li>若两个字母不同行也不同列，在矩阵中找出另外两个字母（ <strong>组中</strong> 第一个字母对应 <strong>行</strong> 优先），使这四个字母成为一个长方形的四个角</li>
@@ -1659,7 +1659,7 @@ K = <code>Playfairexample</code>
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-06-01 16:20:36</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 11:48:45</span>
       
     
   </small>
