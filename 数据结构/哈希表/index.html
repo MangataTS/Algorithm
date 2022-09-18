@@ -1618,16 +1618,16 @@
 - 散列函数的设计应当尽量简单，能够在较短时间内计算出任意关键字对应的地址</p>
 <p>下面则是常用的散列函数：</p>
 <h3 id="21">2.1 直接定址法<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
-<p>散列函数为一个线性函数，我们通过将关键字传入计算出相应的散列地址：
-$$
-H(key)=key \  \text{或者是} \ H(key) = a\times key + b
-$$
-其中 <span class="arithmatex">\(a\)</span> 和 <span class="arithmatex">\(b\)</span> 为常数，因为是线性函数，即 一对一的模式，所以不会产生哈希冲突，他适合关键字分布基本连续的情况，否则会造成存储空间的浪费</p>
+<p>散列函数为一个线性函数，我们通过将关键字传入计算出相应的散列地址：</p>
+<div class="arithmatex">\[
+H(key)=key \\  \text{或者是} \\ H(key) = a\times key + b
+\]</div>
+<p>其中 <span class="arithmatex">\(a\)</span> 和 <span class="arithmatex">\(b\)</span> 为常数，因为是线性函数，即 一对一的模式，所以不会产生哈希冲突，他适合关键字分布基本连续的情况，否则会造成存储空间的浪费</p>
 <h3 id="22">2.2 保留余数法<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
-<p>假设散列表长为 <span class="arithmatex">\(m\)</span> ,取一个不大于 <span class="arithmatex">\(m\)</span> 的最大质数 <span class="arithmatex">\(p\)</span> 哈希函数为：
-$$
+<p>假设散列表长为 <span class="arithmatex">\(m\)</span> ,取一个不大于 <span class="arithmatex">\(m\)</span> 的最大质数 <span class="arithmatex">\(p\)</span> 哈希函数为：</p>
+<div class="arithmatex">\[
 H(key) = key \% p 
-$$</p>
+\]</div>
 <h3 id="23">2.3 数字分析法<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
 <p>设关键字是 <span class="arithmatex">\(r\)</span> 进制数（如十进制数），而 <strong><span class="arithmatex">\(r\)</span> 个数码在各位上出现的频率不一定相同</strong> ，可能在某些位上分布均匀一些，每种数码出现的机会均等；而在某些位上分布不均匀，只有某几种数码经常出现，此时应选取数码分布较为均匀的若干位作为散列地址。  <strong>这种方法适合于己知的关键字集合，若更换了关键字， 则需要重新构造新的散列函数</strong> </p>
 <h3 id="24">2.4 平方取中法<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
@@ -1645,11 +1645,11 @@ $$</p>
 <p>在某些哈希函数的处理下，冲突是无法避免的，那么解决哈希冲突大概有以下的方法：</p>
 <h3 id="31">3.1 开放定址法<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
 <p>当哈希冲突发生的时候，通过往后探测，找到一个空位，显然往后探测的方法不同，也就划分了不同的方式，简单理解为，你在学校准备上厕所，你一眼相中了第二个坑位，当你过去的时候你发现里面有人了（这就是冲突），然后你得去找下一个没有人的坑位（解决冲突），那么你是直接到下一个坑位查看有没有人呢，还是说直接跳三个坑位再看（解决冲突的方法）</p>
-<p>一般的开放地址法的递推公式如下：
-$$
+<p>一般的开放地址法的递推公式如下：</p>
+<div class="arithmatex">\[
 H_i = (H(key) + d_i) \% m
-$$
-其中， <span class="arithmatex">\(H(key)\)</span> 为散列函数， <span class="arithmatex">\(i=0,1,2……,k(k&lt;=m-1)\)</span> ， <span class="arithmatex">\(m\)</span> 表示散列表的长度， <span class="arithmatex">\(d_i\)</span> 表示每次探测的增量</p>
+\]</div>
+<p>其中， <span class="arithmatex">\(H(key)\)</span> 为散列函数， <span class="arithmatex">\(i=0,1,2……,k(k&lt;=m-1)\)</span> ， <span class="arithmatex">\(m\)</span> 表示散列表的长度， <span class="arithmatex">\(d_i\)</span> 表示每次探测的增量</p>
 <p>那么下面就来正式介绍一下这些处理冲突的方法吧。</p>
 <h4 id="311">3.1.1 线性探测<a class="headerlink" href="#311" title="Permanent link">&para;</a></h4>
 <p>线性探测发就是依次往后探测，每次探测的增量为 <span class="arithmatex">\(1\)</span> ,即如果当前映射地址发生冲突了，那么我们就往下一个单元探测，假设也发生了冲突，那么我们就继续往下一个位置探测，直到找到一个空闲的单元</p>
@@ -1662,7 +1662,9 @@ $$
 <div class="arithmatex">\[
 H_i = (H(key)+Hash_i(key)) \% m
 \\
+\\
 \text{或者是}
+\\
 \\
 H_i = (H(key) + i\times Hash_2(key)) \% m
 \]</div>
@@ -1697,7 +1699,7 @@ ASL_{失败}=\sum_{i=1}^n\frac{(散列表中关键字最大地址+1-插入的关
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-06 08:33:20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 09:51:05</span>
       
     
   </small>

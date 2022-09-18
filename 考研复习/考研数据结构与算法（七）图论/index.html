@@ -1858,14 +1858,14 @@ A[i][j] = \begin{cases}
 0 ,若(V_i,V_j)或者 &lt;V_i,V_j&gt;不是E(G)中的边\\
 \end{cases}
 \]</div>
-<p>对于有权图 <span class="arithmatex">\(A[i][j]\)</span> 的含义如下：
-$$
+<p>对于有权图 <span class="arithmatex">\(A[i][j]\)</span> 的含义如下：</p>
+<div class="arithmatex">\[
 A[i][j] = \begin{cases}
-V[i][j] ,若(V_i,V_j)或者 <V_i,V_j>是E(G)中的边 \
-0或∞ ,若(V_i,V_j)或者 <V_i,V_j>不是E(G)中的边\
+V[i][j] ,若(V_i,V_j)或者 &lt;V_i,V_j&gt;是E(G)中的边 \\
+0或∞ ,若(V_i,V_j)或者 &lt;V_i,V_j&gt;不是E(G)中的边\\
 \end{cases}
-$$
-我们可以将这个结构进行封装为如下形式：
+\]</div>
+<p>我们可以将这个结构进行封装为如下形式：
 <div class="highlight"><pre><span></span><code><span class="cp">#define MaxVertexNum 100</span>
 <span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">Vex</span><span class="p">[</span><span class="n">MaxVertexNum</span><span class="p">];</span><span class="c1">//存储当前顶点的表</span>
@@ -2071,10 +2071,10 @@ $$
 <p>有向无环图：字面意思一个不存在环的有向图，简称 <span class="arithmatex">\(DAG\)</span> 图
 对于一个中缀表达式，我们首先是能够将其转化为二叉树的，例如：对于该表达式 <span class="arithmatex">\((a+b)(c-d)\)</span> 的二叉树结构如下：
 <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/a78486164f5740319eccfba2d67731df.png" />
-再来个复杂点的表达式：
-$$
+再来个复杂点的表达式：</p>
+<div class="arithmatex">\[
 ( ( a + b) * ( b * ( c + d)) + ( c + d) * e) * ( ( c + d) * e)
-$$</p>
+\]</div>
 <p>还是先画出这个表达式的二叉树结构
 <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/66a1f2bf329242f6a6f64e6ca420c562.png" />
 我们发现对于根结点的右子树 <span class="arithmatex">\((c+d)*e\)</span> 其实可以删掉,，用根节点指向另一个一样的子树结点，于是得到了如下结构：</p>
@@ -2165,7 +2165,7 @@ $$</p>
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 08:01:40</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 09:51:05</span>
       
     
   </small>

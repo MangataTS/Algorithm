@@ -1618,30 +1618,30 @@
 <h4 id="311">3.1.1 对称矩阵<a class="headerlink" href="#311" title="Permanent link">&para;</a></h4>
 <p>如果对于一个二维矩阵而言，其中所有单位元素满足：<span class="arithmatex">\(a[i][j] = a[j][i] (1&lt;=i,j&lt;=n)\)</span> 那么就称其为对称矩阵，顾名思义就是沿着对角线对称，如下图所示</p>
 <p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/ab86062344ff406dad5b5d681bad59c4.png" /></p>
-<p>由于存在这样的结构，那么我们可以发现空间是重复了，为了提高空间利用率，我们将这个二维数组压缩到一个一维数组里面，那么我们其实可以发现我们只需要保存上三角区或者下三角区的数据就能完整的恢复整个矩阵的数据，这样的话我们就节约了近一半的空间，于是我们将元素 <span class="arithmatex">\(a[i][j]\)</span> 存放到一位数组 <span class="arithmatex">\(b[k]\)</span> 的位置，那么 <span class="arithmatex">\(k\)</span> 和 <span class="arithmatex">\(i、j\)</span> 的关系为（这里的 <span class="arithmatex">\(i、j\)</span> 从 <span class="arithmatex">\(1\)</span> 开始，而 <span class="arithmatex">\(k\)</span> 从 0开始）：
-$$
+<p>由于存在这样的结构，那么我们可以发现空间是重复了，为了提高空间利用率，我们将这个二维数组压缩到一个一维数组里面，那么我们其实可以发现我们只需要保存上三角区或者下三角区的数据就能完整的恢复整个矩阵的数据，这样的话我们就节约了近一半的空间，于是我们将元素 <span class="arithmatex">\(a[i][j]\)</span> 存放到一位数组 <span class="arithmatex">\(b[k]\)</span> 的位置，那么 <span class="arithmatex">\(k\)</span> 和 <span class="arithmatex">\(i、j\)</span> 的关系为（这里的 <span class="arithmatex">\(i、j\)</span> 从 <span class="arithmatex">\(1\)</span> 开始，而 <span class="arithmatex">\(k\)</span> 从 0开始）：</p>
+<div class="arithmatex">\[
 k = \begin{cases}
-\frac{i(i-1)}{2}+j-1, &amp; \text {i&gt;=j，下三角区} \
+\frac{i(i-1)}{2}+j-1, &amp; \text {i&gt;=j，下三角区} \\
 \frac{j(j-1)}{2}+i-1, &amp;\text{i&lt;j，上三角区}
 \end{cases}
-$$</p>
+\]</div>
 <h4 id="312">3.1.2 上（下）三角矩阵<a class="headerlink" href="#312" title="Permanent link">&para;</a></h4>
-<p>下三角矩阵其实就是上三角区全部为相同常量的一个矩阵，这个存储方式和压缩方式和上面的对称矩阵类似，只需要使用一半的空间即可，压缩后的元素下标之间的对应关系如下：
-$$
+<p>下三角矩阵其实就是上三角区全部为相同常量的一个矩阵，这个存储方式和压缩方式和上面的对称矩阵类似，只需要使用一半的空间即可，压缩后的元素下标之间的对应关系如下：</p>
+<div class="arithmatex">\[
 k = \begin{cases}
-\frac{i(i-1)}{2}+j-1, &amp; \text {i&gt;=j，下三角区} \
+\frac{i(i-1)}{2}+j-1, &amp; \text {i&gt;=j，下三角区} \\
 \frac{n(n+1)}{2}, &amp;\text{i&lt;j，上三角区}
 \end{cases}
-$$
-那么我们会发现这里的空间比上面的对称矩阵多一个，即 <span class="arithmatex">\((n+1)n/2 + 1\)</span> ，这里多出来的也就是存储整个上三角区的数据，下三角矩阵在一维数组的压缩存储如下：</p>
+\]</div>
+<p>那么我们会发现这里的空间比上面的对称矩阵多一个，即 <span class="arithmatex">\((n+1)n/2 + 1\)</span> ，这里多出来的也就是存储整个上三角区的数据，下三角矩阵在一维数组的压缩存储如下：</p>
 <p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/13714438569c473582d29c59813e3887.png" /></p>
-<p>那么上三角矩阵也就是同理了
-$$
+<p>那么上三角矩阵也就是同理了</p>
+<div class="arithmatex">\[
 k = \begin{cases}
-\frac{i(2n-i+1)}{2}-n+j - 1, &amp; \text {i&lt;=j，上三角区} \
+\frac{i(2n-i+1)}{2}-n+j - 1, &amp; \text {i&lt;=j，上三角区} \\
 \frac{n(n+1)}{2}, &amp;\text{i&lt;j，下三角区}
 \end{cases}
-$$</p>
+\]</div>
 <h4 id="313">3.1.3 稀疏矩阵<a class="headerlink" href="#313" title="Permanent link">&para;</a></h4>
 <p>稀疏矩阵其实只是一个概念性的东西，也就是在一个矩阵中有效的数据元素很少的矩阵，就称为稀疏矩阵，假设在一个 <span class="arithmatex">\(m\times n\)</span> 的矩阵中，有 <span class="arithmatex">\(t\)</span> 个元素不为 <span class="arithmatex">\(0\)</span> ，令 <span class="arithmatex">\(k = \frac{t}{m\times n}\)</span> ，则 <span class="arithmatex">\(k\)</span> 为矩阵的 <strong>稀疏因子</strong> ，通常认为当 <span class="arithmatex">\(k&lt;=0.05\)</span> 的时候称为稀疏矩阵。</p>
 <p>那么对于一个稀疏矩阵我们应当如何压缩呢，其实我们可以只需要存储稀疏矩阵中不为 <span class="arithmatex">\(0\)</span> 的元素的特征，如行、列、值三个信息，这样就构成了一个三元组，我们只需要存储这些有意义的三元组即存储了整个矩阵，例如：</p>
@@ -1655,8 +1655,8 @@ $$</p>
 <p><span class="arithmatex">\(k = 2i + j - 3\)</span></p>
 <p>结构如图：</p>
 <p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/96c8f0891bbf4df8a854afe77f13b980.png" /></p>
-<p>反之，若知道元素 <span class="arithmatex">\(a[i][j]\)</span> 存放在一维数组中的第 <span class="arithmatex">\(k\)</span> 个位置的话，可以得到： 
-$$
+<p>反之，若知道元素 <span class="arithmatex">\(a[i][j]\)</span> 存放在一维数组中的第 <span class="arithmatex">\(k\)</span> 个位置的话，可以得到： </p>
+<p>$$
 i = \left \lfloor (k+1)/3 + 1 \right \rfloor,j = k - 2i + 3
 $$
 例如，当 <span class="arithmatex">\(k\)</span> 等于 <span class="arithmatex">\(0\)</span> 的时候，<span class="arithmatex">\(i = \left \lfloor (0+1)/3 + 1 \right \rfloor = 1，j = 0-2\times 1 + 3 = 1\)</span> 即第一个位置存放的是矩阵元素 <span class="arithmatex">\(a[1][1]\)</span>  </p>
@@ -1699,7 +1699,7 @@ $$
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 08:01:40</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 09:51:05</span>
       
     
   </small>

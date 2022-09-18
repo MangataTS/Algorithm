@@ -1809,11 +1809,11 @@
 
 <h1 id="_1">考研数据结构与算法（二）线性表<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">一、线性表定义<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>线性表是最常用且最简单的一种数据结构，简言之，一个线性表是 <span class="arithmatex">\(n\)</span> 个数据元素的有限序列，当 <span class="arithmatex">\(n\)</span> 为 <span class="arithmatex">\(0\)</span> 的时候线性表是一个空表，用 <span class="arithmatex">\(L\)</span> 命名线性表，则一般表示为：
-$$
+<p>线性表是最常用且最简单的一种数据结构，简言之，一个线性表是 <span class="arithmatex">\(n\)</span> 个数据元素的有限序列，当 <span class="arithmatex">\(n\)</span> 为 <span class="arithmatex">\(0\)</span> 的时候线性表是一个空表，用 <span class="arithmatex">\(L\)</span> 命名线性表，则一般表示为：</p>
+<div class="arithmatex">\[
 L=(a_1,a_2,a_3……,a_i,a_{i+1}……,a_n)
-$$
-其中， <span class="arithmatex">\(a_1\)</span> 表示表首元素， <span class="arithmatex">\(a_n\)</span> 表示表尾元素，除了表首元素外其余元素皆有直接后继节点，除了表尾元素其余元素皆有直接前驱节点。</p>
+\]</div>
+<p>其中， <span class="arithmatex">\(a_1\)</span> 表示表首元素， <span class="arithmatex">\(a_n\)</span> 表示表尾元素，除了表首元素外其余元素皆有直接后继节点，除了表尾元素其余元素皆有直接前驱节点。</p>
 <p>线性表是一个相当灵活的数据结构，他的长度可根据需要增长或缩短，即对线性表的元素不仅可以访问，还可以进行插入和删除等</p>
 <p>于是我们能得出线性表的特点如下：</p>
 <blockquote>
@@ -1875,15 +1875,15 @@ $$
 </table>
 <h2 id="_4">三、线性表的顺序表示<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>这个顺序表示是从物理上定义的，线性表的顺序存储 称顺序表 它是用一组地址连续的存储单元依次存储线性表中的数据元素，从而使得 <strong>逻辑上相邻的两个元素在物理位置上也相邻</strong> 。这个可以简单理解为就是数组。</p>
-<p>由于顺序表在逻辑和物理上都是连续的特点，我们很容易通过物理位置的间隔长度和单个元素的大小推断出这个间隔的元素个数，或者反过来计算出一定元素占用的空间，假设每一个元素占用 <span class="arithmatex">\(l\)</span> 的物理空间，<span class="arithmatex">\(LOC(a_i)\)</span> 表示 <span class="arithmatex">\(a_i\)</span> 元素的物理位置，那么可以得到：
-$$
+<p>由于顺序表在逻辑和物理上都是连续的特点，我们很容易通过物理位置的间隔长度和单个元素的大小推断出这个间隔的元素个数，或者反过来计算出一定元素占用的空间，假设每一个元素占用 <span class="arithmatex">\(l\)</span> 的物理空间，<span class="arithmatex">\(LOC(a_i)\)</span> 表示 <span class="arithmatex">\(a_i\)</span> 元素的物理位置，那么可以得到：</p>
+<div class="arithmatex">\[
 LOC(a_{i+1}) = LOC(a_i) + l
-$$
-以及从第一个元素物理位置推出第 <span class="arithmatex">\(i\)</span> 个元素的物理位置：
-$$
+\]</div>
+<p>以及从第一个元素物理位置推出第 <span class="arithmatex">\(i\)</span> 个元素的物理位置：</p>
+<div class="arithmatex">\[
 LOC(a_{i}) = LOC(a_1) + (i-1)\times l
-$$
-简单的一张图来表示：</p>
+\]</div>
+<p>简单的一张图来表示：</p>
 <p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/3c598c0928024003a50d21b39997c846.png" /></p>
 <blockquote>
 <p>这里需要注意的是，数组下表是从 <span class="arithmatex">\(0\)</span> 开始的，而顺序表下表是从 <span class="arithmatex">\(1\)</span> 开始的</p>
@@ -2310,7 +2310,7 @@ $$
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 08:01:40</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 09:51:05</span>
       
     
   </small>

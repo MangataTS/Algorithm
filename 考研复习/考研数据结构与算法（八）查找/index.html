@@ -1742,30 +1742,30 @@ ASL_{成功} = \sum_{i=1}^nP_ii = \frac{n+1}{2}
 ASL_{成功} = \sum_{i=1}^nP_i(n-i+1) = \frac{n+1}{2}
 \]</div>
 <p>反正结果是一样的啦~</p>
-<p>我们 <strong>考虑一下查找失败的情况</strong> ，假设查找失败的概率和查找成功的概率一样，那么对于查找失败的情况来说每一次查找的概率是和已经有元素一样即 <span class="arithmatex">\(P_i = \frac{1}{2n}\)</span> ，而每次匹配的次数都是 <span class="arithmatex">\(n\)</span> 次（ <strong>从头到尾匹配完，这里使用的是非哨兵模式</strong> ），那么失败平均匹配长度为：
-$$
+<p>我们 <strong>考虑一下查找失败的情况</strong> ，假设查找失败的概率和查找成功的概率一样，那么对于查找失败的情况来说每一次查找的概率是和已经有元素一样即 <span class="arithmatex">\(P_i = \frac{1}{2n}\)</span> ，而每次匹配的次数都是 <span class="arithmatex">\(n\)</span> 次（ <strong>从头到尾匹配完，这里使用的是非哨兵模式</strong> ），那么失败平均匹配长度为：</p>
+<div class="arithmatex">\[
 ASL_{失败} = \sum_{i=1}^nP_i(n) = \frac{n}{2}
-$$</p>
-<p>此时的成功平均匹配长度为：
-$$
+\]</div>
+<p>此时的成功平均匹配长度为：</p>
+<div class="arithmatex">\[
 ASL_{成功} = \sum_{i=1}^nP_ii = \frac{n+1}{4}
-$$</p>
+\]</div>
 <p>所以平均匹配长度为：</p>
 <div class="arithmatex">\[
 ASL_{平均} = ASL_{成功} + ASL_{失败} =  \frac{n+1}{4} + \frac{n}{2} = \frac{3n + 1}{4}
 \]</div>
-<p>假设我们的顺序表是一个有序表的话，那么我们进行失败匹配的过程中会减少一点，假设我们走到了一个大于查找的 <code>key</code> 的第一个位置，因为顺序表是一个有序的，那么我们现在就需要停止，那么对于第 <span class="arithmatex">\(i\)</span> 个未查找到的元素我们需要比较 <span class="arithmatex">\(i+1\)</span> 次，那么对于匹配失败的概率是 <span class="arithmatex">\(\frac{1}{2n}\)</span> ，匹配失败的长度为 
-$$
+<p>假设我们的顺序表是一个有序表的话，那么我们进行失败匹配的过程中会减少一点，假设我们走到了一个大于查找的 <code>key</code> 的第一个位置，因为顺序表是一个有序的，那么我们现在就需要停止，那么对于第 <span class="arithmatex">\(i\)</span> 个未查找到的元素我们需要比较 <span class="arithmatex">\(i+1\)</span> 次，那么对于匹配失败的概率是 <span class="arithmatex">\(\frac{1}{2n}\)</span> ，匹配失败的长度为 </p>
+<div class="arithmatex">\[
 C_i =
 \begin{cases} 
-i+1,  &amp; \text{if}  i&lt;n \
-n, &amp; \text{if}  i=n
+i+1,  &amp; \text{if} \ i&lt;n \\
+n, &amp; \text{if} \ i=n
 \end{cases}
-$$
-那么对于失败匹配的平均长度为：
-$$
+\]</div>
+<p>那么对于失败匹配的平均长度为：</p>
+<div class="arithmatex">\[
 ASL{失败}=\sum_{i=1}^nP_iC_i = \frac{1}{2n}\sum{i=1}C_i = \frac{1+2+3+……+n+n}{2n} = \frac{n+3}{4}
-$$</p>
+\]</div>
 <p>假设对于一个 <span class="arithmatex">\(n\)</span> 为 <span class="arithmatex">\(10\)</span> 的顺序表而言，如果是乱序，那么其失败查找长度为： <span class="arithmatex">\(5\)</span> ，若是有序的话，其失败匹配平均长度为 <span class="arithmatex">\(\frac{13}{4}\)</span> ，可以看得出确实有一定提升</p>
 <blockquote>
 <p>注意：
@@ -1775,8 +1775,8 @@ $$</p>
 <h3 id="22">2.2 有序表（二分查找）<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
 <p>这一块着重于介绍二分查找（折半查找）这一算法，能够在有序表中高效的查找我们所需的信息，详细的讲解可以观看下面的博客（内附视频）
 <a href="https://acmer.blog.csdn.net/article/details/118559948">https://acmer.blog.csdn.net/article/details/118559948</a></p>
-<p>举一个二分查找的例子，假设有如下的序列 <span class="arithmatex">\(a\)</span> ：
-$$
+<p>举一个二分查找的例子，假设有如下的序列 <span class="arithmatex">\(a\)</span> ：</p>
+<p>$$
 {7, 10, 13 , 16, 19, 29, 32 , 33 , 37, 41 , 43 }
 $$
 简单绘画一下（下标从 <span class="arithmatex">\(1\)</span> 开始）
@@ -1833,11 +1833,11 @@ ASL_{成功} = L_i + L_s
 <div class="arithmatex">\[
 ASL_{成功} = L_i + L_s = \frac{b+1}{2} + \frac{s+1}{2} = \frac{s^2+2s+n}{2s}
 \]</div>
-<p>ps: 
-$$
-∵sb=n \
+<p>ps: </p>
+<div class="arithmatex">\[
+∵sb=n \\
 ∴ b = \frac{n}{s}
-$$</p>
+\]</div>
 <p>此时，如果 <span class="arithmatex">\(s = \sqrt{n}\)</span> ，那么平均(成功)查找长度取得最小值 <span class="arithmatex">\(\sqrt{n}+1\)</span> ，若是对索引表进行二分查找加速的话，那么平均查找长度可为：</p>
 <div class="arithmatex">\[
 ASL = L_i + L_s =  \left \lceil log_2(b+1) \right \rceil + \frac{s+1}{2}
@@ -1862,7 +1862,7 @@ ASL = L_i + L_s =  \left \lceil log_2(b+1) \right \rceil + \frac{s+1}{2}
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 08:01:40</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 09:51:05</span>
       
     
   </small>

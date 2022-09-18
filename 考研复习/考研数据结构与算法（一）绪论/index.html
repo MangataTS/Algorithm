@@ -1649,15 +1649,15 @@
 <h3 id="43">4.3 时间复杂度<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
 <p>先来看维基百科的解释：</p>
 <p>在<a href="https://zh.m.wikipedia.org/wiki/计算机科学">计算机科学</a>中，<a href="https://zh.m.wikipedia.org/wiki/算法">算法</a>的<strong>时间复杂度</strong>（Time complexity）是一个<a href="https://zh.m.wikipedia.org/wiki/函数">函数</a>，它定性描述该算法的运行时间。这是一个代表算法输入值的<a href="https://zh.m.wikipedia.org/wiki/字符串">字符串</a>的长度的函数。时间复杂度常用<a href="https://zh.m.wikipedia.org/wiki/大O符号">大O符号</a>表述，不包括这个函数的低阶项和首项系数。使用这种方式时，时间复杂度可被称为是<a href="https://zh.m.wikipedia.org/wiki/渐近分析">渐近</a>的，亦即考察输入值大小趋近无穷时的情况。例如，如果一个算法对于任何大小为 <span class="arithmatex">\(n\)</span> （必须比 <span class="arithmatex">\(n_0\)</span> 大）的输入，它至多需要 <span class="arithmatex">\(5n^3 + 3n\)</span> 的时间运行完毕，那么它的 <strong>渐近时间复杂度</strong> 是 <span class="arithmatex">\(O(n^3)\)</span>。</p>
-<p>一个语句的频度是指该语句在算法中被重复执行的次数 。算法中所有语旬的频度之和记为 <span class="arithmatex">\(T(n)\)</span> 时，它是该算法问题规模  <span class="arithmatex">\(n\)</span> 的函数，时间复杂度主要分析 <span class="arithmatex">\(T(n)\)</span> 的数量级。算法中基本运算（最深层循环内的语句）的频度与 <span class="arithmatex">\(T(n)\)</span> 同数量级，因此通常采用算法中基本运算的频度 <span class="arithmatex">\(f(n)\)</span> 来分析算法 的时间 复杂度②。 因此，算法的时间复杂度记为
-$$
+<p>一个语句的频度是指该语句在算法中被重复执行的次数 。算法中所有语旬的频度之和记为 <span class="arithmatex">\(T(n)\)</span> 时，它是该算法问题规模  <span class="arithmatex">\(n\)</span> 的函数，时间复杂度主要分析 <span class="arithmatex">\(T(n)\)</span> 的数量级。算法中基本运算（最深层循环内的语句）的频度与 <span class="arithmatex">\(T(n)\)</span> 同数量级，因此通常采用算法中基本运算的频度 <span class="arithmatex">\(f(n)\)</span> 来分析算法 的时间 复杂度②。 因此，算法的时间复杂度记为</p>
+<div class="arithmatex">\[
 T(n) = O(f(n))
-$$
-其中O的含义就是 <span class="arithmatex">\(T(n)\)</span> 的数量级</p>
-<p>这里列举一下常见的渐进时间复杂度：
-$$
+\]</div>
+<p>其中O的含义就是 <span class="arithmatex">\(T(n)\)</span> 的数量级</p>
+<p>这里列举一下常见的渐进时间复杂度：</p>
+<div class="arithmatex">\[
 O(1) &lt; O(log_2n) &lt; O(n) &lt; O(nlog_2n) &lt; O(n^2) &lt; O(n^3) &lt; 0(2^n) &lt; O(n!) &lt; O(n^n) 
-$$</p>
+\]</div>
 <p>其实我们平时所讲的时间复杂度是一个 <strong>平均时间复杂度</strong> 或者说是 <strong>渐进时间复杂度</strong> ，假设数据规模为 <span class="arithmatex">\(n\)</span> ，那么我们每做一次相近数据规模的操作，复杂度的指数就会增加 <span class="arithmatex">\(1\)</span> ，例如我们对一个长度为 <span class="arithmatex">\(n\)</span> 的数组做一个循环，那么这个渐进时间复杂度就是 <span class="arithmatex">\(O(n)\)</span> ，如果说我们循环的是一个 <span class="arithmatex">\(n\times n\)</span> 的二维矩阵，那么复杂度就为 <span class="arithmatex">\(O(n^2)\)</span> 假设说我们的二维数组的每一行的数据都是有序的，我们需要从中找到指定的元素的位置，这时我们使用二分查找加速每一行的查找，那么我们发现复杂度就变成了 <span class="arithmatex">\(O(nlog_2n)\)</span></p>
 <p>关于少算的那一部分次数，我们将其称为 <strong>常数</strong> ，有的时候常数也是能影响一个算法的</p>
 <p>更加复杂的时间复杂度分析，例如分析递归函数的时间复杂度可以去参考 <a href="https://oi-wiki.org/basic/complexity/">势能分析法</a></p>
@@ -1670,7 +1670,7 @@ $$</p>
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 08:01:40</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 09:51:05</span>
       
     
   </small>

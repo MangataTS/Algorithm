@@ -2646,11 +2646,11 @@
 </blockquote>
 <h2 id="_7">六、哈夫曼树（最优二叉树）<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <h3 id="61">6.1 哈夫曼树的定义<a class="headerlink" href="#61" title="Permanent link">&para;</a></h3>
-<p>树中结点常常被赋予一个表示某种意义的数值，称为该结点的权。从树的根到任意结点的<strong>路径长度</strong>（经过的边数）与该<strong>结点上权值</strong>的乘积，称为该结点的带权路径长度。 树中所有叶结点的带权路径长度之和称为该树的带权路径长度，记为：
-$$
-WPL  = \sum_{i=1}^n W_iL_i
-$$
-在含有 <span class="arithmatex">\(n\)</span> 个带权叶结点的二叉树中 ， 其中带权路径长度（ <span class="arithmatex">\(WPL\)</span> ） 最小的二叉树称为哈夫曼树、也称最优二又树。</p>
+<p>树中结点常常被赋予一个表示某种意义的数值，称为该结点的权。从树的根到任意结点的<strong>路径长度</strong>（经过的边数）与该<strong>结点上权值</strong>的乘积，称为该结点的带权路径长度。 树中所有叶结点的带权路径长度之和称为该树的带权路径长度，记为：</p>
+<div class="arithmatex">\[
+WPL \ = \sum_{i=1}^n W_iL_i
+\]</div>
+<p>在含有 <span class="arithmatex">\(n\)</span> 个带权叶结点的二叉树中 ， 其中带权路径长度（ <span class="arithmatex">\(WPL\)</span> ） 最小的二叉树称为哈夫曼树、也称最优二又树。</p>
 <p>例如下图中图 <span class="arithmatex">\(C\)</span> 的 <span class="arithmatex">\(WPL\)</span> 最小，并且恰好为哈夫曼树</p>
 <p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/ee3c6867aa8644b59107a863b195cd29.png" /></p>
 <h3 id="62">6.2 哈夫曼树构造<a class="headerlink" href="#62" title="Permanent link">&para;</a></h3>
@@ -2783,7 +2783,7 @@ $$
 <p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/808b76887c8443d496d3bfd646d7e471.png" /></p>
 <blockquote>
 <p>一棵度为 <span class="arithmatex">\(m\)</span> 的哈夫曼树应只有度为 <span class="arithmatex">\(0\)</span> 和 <span class="arithmatex">\(m\)</span> 的结点，设度为 <span class="arithmatex">\(m\)</span> 的结点有 <span class="arithmatex">\(n_m\)</span> 个， 度为 <span class="arithmatex">\(0\)</span> 的结点有<span class="arithmatex">\(n_0\)</span> 个， 又设结点总数为 <span class="arithmatex">\(n\)</span> , <span class="arithmatex">\(n = n0 + n_m\)</span>。因有 <span class="arithmatex">\(n\)</span> 个结点的哈夫曼树有 <span class="arithmatex">\(n - 1\)</span> 条分支</p>
-<p>则 $mn_m= n - 1 = n_m + n_0 -1 $， 整理得</p>
+<p>则 <span class="arithmatex">\(mn_m= n - 1 = n_m + n_0 -1\)</span> ， 整理得</p>
 <div class="arithmatex">\[（m - 1) n_m = n_0 - 1 \\ n_m = (n - 1 )/(m - 1 )\]</div>
 </blockquote>
 <h3 id="92">9.2 简答题<a class="headerlink" href="#92" title="Permanent link">&para;</a></h3>
@@ -2793,7 +2793,7 @@ $$
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 08:01:40</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 09:51:05</span>
       
     
   </small>

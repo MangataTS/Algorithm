@@ -1657,15 +1657,17 @@
 <h3 id="22">2.2 子密钥生成流程<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
 <p>我们的初始密钥也是 <span class="arithmatex">\(128\)</span> 位的，那么我们以 <strong>一列</strong> 作为一个单位进行变化，每新增一个子密钥，我们所谓的列的数量就增加 <span class="arithmatex">\(4\)</span> 于是密钥拓展的核心就是：</p>
 <ul>
-<li>如果当前拓展的列 <span class="arithmatex">\(i\)</span> 不是 <span class="arithmatex">\(4\)</span> 的倍数，那么第 <span class="arithmatex">\(i\)</span> 列由如下等式确定：（其中 <span class="arithmatex">\(W[i]\)</span> 表示的就是第 <span class="arithmatex">\(i\)</span> 列的数据）
-$$
-W[i]=W[i-4]  Xor  W[i-1]
-$$</li>
-<li>如果当前拓展的列 <span class="arithmatex">\(i\)</span> 是 <span class="arithmatex">\(4\)</span> 的倍数，那么第 <span class="arithmatex">\(i\)</span> 列由如下等式确定：
-$$
-W[i]=W[i-4]  Xor  T(W[i-1])
-$$</li>
+<li>如果当前拓展的列 <span class="arithmatex">\(i\)</span> 不是 <span class="arithmatex">\(4\)</span> 的倍数，那么第 <span class="arithmatex">\(i\)</span> 列由如下等式确定：（其中 <span class="arithmatex">\(W[i]\)</span> 表示的就是第 <span class="arithmatex">\(i\)</span> 列的数据）</li>
 </ul>
+<div class="arithmatex">\[
+W[i]=W[i-4] \ Xor \ W[i-1]
+\]</div>
+<ul>
+<li>如果当前拓展的列 <span class="arithmatex">\(i\)</span> 是 <span class="arithmatex">\(4\)</span> 的倍数，那么第 <span class="arithmatex">\(i\)</span> 列由如下等式确定：</li>
+</ul>
+<div class="arithmatex">\[
+W[i]=W[i-4] \ Xor \ T(W[i-1])
+\]</div>
 <p>关于这个 <span class="arithmatex">\(T\)</span> 函数，我们下面仔细讲解</p>
 <h3 id="23">2.3 字节代换<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
 <p>一般来说我们会给一个 <span class="arithmatex">\(16\times 16\)</span> 的 <span class="arithmatex">\(S\)</span> 盒子，然后我们将每一个字节的前 <span class="arithmatex">\(4\)</span> 位（转化为16进制）作为 <span class="arithmatex">\(X\)</span> 轴的坐标，然后后 <span class="arithmatex">\(4\)</span> 位作为 <span class="arithmatex">\(Y\)</span> 轴的坐标，然后进行一个值的替换，最终我们将所有字节都替换完成即可</p>
@@ -1687,10 +1689,10 @@ $$</li>
 然后加法变成了异或运算，例如，我们现在左边矩阵第一行的元素都是 <span class="arithmatex">\(a_i\)</span> ，右边的矩阵元素都是 <span class="arithmatex">\(b_i\)</span> ，顺序如下：
 <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/4c40f53189aa4c7fa38d489fb6f70c39.png" />
 B矩阵同理，那么我们想算出新矩阵 <span class="arithmatex">\(C\)</span> 的第一个字节的值就为：</p>
-<p>$$
+<div class="arithmatex">\[
 c_1 = (a_1 \times b_1) ⊕ (a_2 \times b_5) ⊕ (a_3 \times b_9) ⊕ (a_4 \times a_{13})
-$$
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/3dcf01d0660942b6ba63b5825d08ae5e.png" /></p>
+\]</div>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/3dcf01d0660942b6ba63b5825d08ae5e.png" /></p>
 <h3 id="26">2.6 轮密钥加变换<a class="headerlink" href="#26" title="Permanent link">&para;</a></h3>
 <p>轮密钥加就是直接将一个 <strong>指定矩阵</strong> 和当前的待加密矩阵进行对每个字节 <strong>按位异或</strong> 操作即可</p>
 <p>大概操作如图：
@@ -1739,7 +1741,7 @@ $$
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-06-01 16:20:36</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 09:51:05</span>
       
     
   </small>
