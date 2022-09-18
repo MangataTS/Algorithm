@@ -1638,8 +1638,8 @@
 该算法为比利时密码学家 <span class="arithmatex">\(Joan Daemen和Vincent Rijmen\)</span> 所设计，结合两位作者的名字，以 <span class="arithmatex">\(Rijdael\)</span> 之名命之，投稿高级加密标准的甄选流程。（ <span class="arithmatex">\(Rijdael\)</span> 的发音近于 " <span class="arithmatex">\(Rhine doll\)</span> "。）</p>
 <h2 id="_2">二、原理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>先说明一下无论是明文还是密钥（密钥可以是 <span class="arithmatex">\(192\)</span> 、 <span class="arithmatex">\(256\)</span>  位，我们这里只考虑 <span class="arithmatex">\(128\)</span> 位的情况）还是密文都是 <span class="arithmatex">\(128\)</span> 位一组的，也就是16个字节，那么我们就可以用一个 <span class="arithmatex">\(4\times 4\)</span> 的矩阵来表示这个数据。</p>
-<p>大概的流程可以先看一下这个流程图：（建议看完下面的介绍后再回过来看一下）
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/8a87462655ae414587627ac9fc161ff7.png" /></p>
+<p>大概的流程可以先看一下这个流程图：（建议看完下面的介绍后再回过来看一下）</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/8a87462655ae414587627ac9fc161ff7.png" /></p>
 <h3 id="21">2.1 明文加密流程<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
 <ul>
 <li>初始变换（其实就是 <strong>轮密钥加</strong> 操作）</li>
@@ -1652,8 +1652,8 @@
 </li>
 <li>最终轮运算（实际上是 <strong>除去</strong> 列混淆的轮操作函数）</li>
 </ul>
-<p>如图：
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/cd49c7eb4a774947913c737608aa5eb0.png" /></p>
+<p>如图：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/cd49c7eb4a774947913c737608aa5eb0.png" /></p>
 <h3 id="22">2.2 子密钥生成流程<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
 <p>我们的初始密钥也是 <span class="arithmatex">\(128\)</span> 位的，那么我们以 <strong>一列</strong> 作为一个单位进行变化，每新增一个子密钥，我们所谓的列的数量就增加 <span class="arithmatex">\(4\)</span> 于是密钥拓展的核心就是：</p>
 <ul>
@@ -1671,8 +1671,8 @@ W[i]=W[i-4] \ Xor \ T(W[i-1])
 <p>关于这个 <span class="arithmatex">\(T\)</span> 函数，我们下面仔细讲解</p>
 <h3 id="23">2.3 字节代换<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
 <p>一般来说我们会给一个 <span class="arithmatex">\(16\times 16\)</span> 的 <span class="arithmatex">\(S\)</span> 盒子，然后我们将每一个字节的前 <span class="arithmatex">\(4\)</span> 位（转化为16进制）作为 <span class="arithmatex">\(X\)</span> 轴的坐标，然后后 <span class="arithmatex">\(4\)</span> 位作为 <span class="arithmatex">\(Y\)</span> 轴的坐标，然后进行一个值的替换，最终我们将所有字节都替换完成即可</p>
-<p>这里借用一个图：
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/922858eaffc54f44b35eec4a1c0a2e36.png" /></p>
+<p>这里借用一个图：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/922858eaffc54f44b35eec4a1c0a2e36.png" /></p>
 <h3 id="24">2.4 行位移<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
 <p>此时我们需要将每一行数据想象成一个环形</p>
 <ul>
@@ -1681,13 +1681,13 @@ W[i]=W[i-4] \ Xor \ T(W[i-1])
 <li>对于第三行，我们向左循环移动 <span class="arithmatex">\(2\)</span> 个字节</li>
 <li>对于第四行，我们向左循环移动 <span class="arithmatex">\(3\)</span> 个字节</li>
 </ul>
-<p>可以参考下图：
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/7aa762672f714310abea68d033321961.png" /></p>
+<p>可以参考下图：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/7aa762672f714310abea68d033321961.png" /></p>
 <h3 id="25">2.5 列混淆（混合）<a class="headerlink" href="#25" title="Permanent link">&para;</a></h3>
-<p>我们将会给当前的这个矩阵 <strong>左乘</strong> 一个 <strong>指定矩阵</strong> 但是注意的是这里的矩阵乘法不是普通意义上的，而是有限域 <span class="arithmatex">\(GF(2^8)\)</span> 上的乘法，我们知道矩阵的乘法是左边的行乘上右边的列，那么对于每一个字节而言，都有 <span class="arithmatex">\(8\)</span> 位，在有限域的乘法中，乘法变为了多项式乘法，例如：
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/515deb17ef0b47b3b3cf1b09b7b7d202.png" />
-然后加法变成了异或运算，例如，我们现在左边矩阵第一行的元素都是 <span class="arithmatex">\(a_i\)</span> ，右边的矩阵元素都是 <span class="arithmatex">\(b_i\)</span> ，顺序如下：
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/4c40f53189aa4c7fa38d489fb6f70c39.png" />
+<p>我们将会给当前的这个矩阵 <strong>左乘</strong> 一个 <strong>指定矩阵</strong> 但是注意的是这里的矩阵乘法不是普通意义上的，而是有限域 <span class="arithmatex">\(GF(2^8)\)</span> 上的乘法，我们知道矩阵的乘法是左边的行乘上右边的列，那么对于每一个字节而言，都有 <span class="arithmatex">\(8\)</span> 位，在有限域的乘法中，乘法变为了多项式乘法，例如：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/515deb17ef0b47b3b3cf1b09b7b7d202.png" />
+然后加法变成了异或运算，例如，我们现在左边矩阵第一行的元素都是 <span class="arithmatex">\(a_i\)</span> ，右边的矩阵元素都是 <span class="arithmatex">\(b_i\)</span> ，顺序如下：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/4c40f53189aa4c7fa38d489fb6f70c39.png" />
 B矩阵同理，那么我们想算出新矩阵 <span class="arithmatex">\(C\)</span> 的第一个字节的值就为：</p>
 <div class="arithmatex">\[
 c_1 = (a_1 \times b_1) ⊕ (a_2 \times b_5) ⊕ (a_3 \times b_9) ⊕ (a_4 \times a_{13})
@@ -1695,8 +1695,8 @@ c_1 = (a_1 \times b_1) ⊕ (a_2 \times b_5) ⊕ (a_3 \times b_9) ⊕ (a_4 \times
 <p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/3dcf01d0660942b6ba63b5825d08ae5e.png" /></p>
 <h3 id="26">2.6 轮密钥加变换<a class="headerlink" href="#26" title="Permanent link">&para;</a></h3>
 <p>轮密钥加就是直接将一个 <strong>指定矩阵</strong> 和当前的待加密矩阵进行对每个字节 <strong>按位异或</strong> 操作即可</p>
-<p>大概操作如图：
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/289271b94b70427d8cf92e562019e40b.png" /></p>
+<p>大概操作如图：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/289271b94b70427d8cf92e562019e40b.png" /></p>
 <h3 id="27-t">2.7 密钥拓展中的T函数<a class="headerlink" href="#27-t" title="Permanent link">&para;</a></h3>
 <p><span class="arithmatex">\(T\)</span> 函数由三个部分组成： <strong>字循环</strong> 、 <strong>字节代换</strong> 、 <strong>轮常量异或</strong></p>
 <h4 id="271">2.7.1 字循环<a class="headerlink" href="#271" title="Permanent link">&para;</a></h4>
@@ -1741,7 +1741,7 @@ c_1 = (a_1 \times b_1) ⊕ (a_2 \times b_5) ⊕ (a_3 \times b_9) ⊕ (a_4 \times
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 09:51:05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 12:08:00</span>
       
     
   </small>

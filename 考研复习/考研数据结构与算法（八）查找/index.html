@@ -1779,19 +1779,23 @@ ASL{失败}=\sum_{i=1}^nP_iC_i = \frac{1}{2n}\sum{i=1}C_i = \frac{1+2+3+……+n
 <div class="arithmatex">\[
 \{7, 10, 13 , 16, 19, 29, 32 , 33 , 37, 41 , 43 \}
 \]</div>
-<p>简单绘画一下（下标从 <span class="arithmatex">\(1\)</span> 开始）
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/631be57a1f914f12b2c4ff546ea5a507.png" /></p>
+<p>简单绘画一下（下标从 <span class="arithmatex">\(1\)</span> 开始）</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/631be57a1f914f12b2c4ff546ea5a507.png" /></p>
 <p>假设我们要查找 <span class="arithmatex">\(32\)</span> 这个元素，那么查找过程如下：</p>
 <ul>
 <li>第一次查找：<span class="arithmatex">\(mid = \left \lfloor \frac{\text{left}+\text{right}}{2} \right \rfloor =\left \lfloor \frac{1+11}{2} \right \rfloor = 6\)</span> 于是我们就将 <span class="arithmatex">\(a[6]\)</span> 和 <span class="arithmatex">\(32\)</span> 进行比较，我们发现 <span class="arithmatex">\(a[6] &lt; 32\)</span> 于是我们将 <span class="arithmatex">\(left\)</span> 更新，即 <span class="arithmatex">\(left = mid + 1 = 7\)</span> ，<span class="arithmatex">\(right\)</span> 不变，还是 <span class="arithmatex">\(11\)</span> </li>
 </ul>
-<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/97c50e165cee456a8d799c60dd3c5020.png" />
-- 第二次查找： <span class="arithmatex">\(mid = \left \lfloor \frac{\text{left}+\text{right}}{2} \right \rfloor =\left \lfloor \frac{7+11}{2} \right \rfloor = 9\)</span> 于是我们将 <span class="arithmatex">\(a[9]\)</span> 和 <span class="arithmatex">\(32\)</span> 进行比较，我们发现 <span class="arithmatex">\(a[9] &gt; 32\)</span> 于是我们将 <span class="arithmatex">\(right\)</span> 更新，即 <span class="arithmatex">\(right = mid - 1 = 8\)</span> ， <span class="arithmatex">\(left\)</span> 不变，还是 <span class="arithmatex">\(7\)</span></p>
-<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/9e52d9631143496db8e28c31ff5b7dca.png" />
-- 第三次查找： <span class="arithmatex">\(mid = \left \lfloor \frac{\text{left}+\text{right}}{2} \right \rfloor =\left \lfloor \frac{7+8}{2} \right \rfloor = 7\)</span> 于是我们将 <span class="arithmatex">\(a[7]\)</span> 和 <span class="arithmatex">\(32\)</span> 进行比较，我们发现 <span class="arithmatex">\(a[9] = 32\)</span> 此时我们就找到了这个元素，那么我们将当前位置返回，至此查找完成~</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/97c50e165cee456a8d799c60dd3c5020.png" /></p>
+<ul>
+<li>第二次查找： <span class="arithmatex">\(mid = \left \lfloor \frac{\text{left}+\text{right}}{2} \right \rfloor =\left \lfloor \frac{7+11}{2} \right \rfloor = 9\)</span> 于是我们将 <span class="arithmatex">\(a[9]\)</span> 和 <span class="arithmatex">\(32\)</span> 进行比较，我们发现 <span class="arithmatex">\(a[9] &gt; 32\)</span> 于是我们将 <span class="arithmatex">\(right\)</span> 更新，即 <span class="arithmatex">\(right = mid - 1 = 8\)</span> ， <span class="arithmatex">\(left\)</span> 不变，还是 <span class="arithmatex">\(7\)</span></li>
+</ul>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/9e52d9631143496db8e28c31ff5b7dca.png" /></p>
+<ul>
+<li>第三次查找： <span class="arithmatex">\(mid = \left \lfloor \frac{\text{left}+\text{right}}{2} \right \rfloor =\left \lfloor \frac{7+8}{2} \right \rfloor = 7\)</span> 于是我们将 <span class="arithmatex">\(a[7]\)</span> 和 <span class="arithmatex">\(32\)</span> 进行比较，我们发现 <span class="arithmatex">\(a[9] = 32\)</span> 此时我们就找到了这个元素，那么我们将当前位置返回，至此查找完成~</li>
+</ul>
 <p>其实二分查找的过程可以看作为一颗二叉树，我们称其为 <strong>判定树</strong> ， 我们画出上面序列的判定树，不难发现这颗判定树是一颗 <strong>平衡二叉树</strong> </p>
-<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/cbc96991f1d549139ecc36380dec3d87.png" />
-在这棵二叉树中：树中每个<strong>圆形结点表示一个记录</strong>， 结点中的值为该记录的关键字值；树中最下面的叶结点都是 <strong>方形</strong> 的，它 <strong>表示查找不成功</strong> 的情况。</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/cbc96991f1d549139ecc36380dec3d87.png" /></p>
+<p>在这棵二叉树中：树中每个<strong>圆形结点表示一个记录</strong>， 结点中的值为该记录的关键字值；树中最下面的叶结点都是 <strong>方形</strong> 的，它 <strong>表示查找不成功</strong> 的情况。</p>
 <p>用折半查找法查找到给定值的比较次数最多不会超过 <strong>树的高度</strong> 。在 <strong>等概率</strong> 查找时，设 <span class="arithmatex">\(h\)</span> 为该判定树的高度，且当树中元素个数为 <span class="arithmatex">\(n\)</span> 时判定树高 <span class="arithmatex">\(h = \left \lceil log_2(n+1) \right \rceil\)</span> 或者是 <span class="arithmatex">\(\left \lfloor log_2(n) \right \rfloor + 1\)</span>， 查找成功的平均查找长度为：</p>
 <div class="arithmatex">\[
 ASL_{成功} = \frac{1}{n}\sum_{i=1}^nL_i=\frac{1\times 1 + 2\times 2 + 3\times 3 + …… + h \times 2^{h-1}}{n} = \frac{n+1}{n}log_2(n+1)-1 ≈ log_2(n+1)-1
@@ -1817,9 +1821,9 @@ ASL_{失败} = \frac{1}{m}\sum_{i=1}^nL_i = \frac{1\times D_1 + 2\times D_2 + 3\
 <ul>
 <li>按照关键字我们分为四个块： <span class="arithmatex">\(24、54、78、88\)</span></li>
 </ul>
-<p>如下图所示：
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/b53642158554470dad9bd8da63c6106b.png" />
-<strong>ps：这里的索引表构造可以有多种情况</strong></p>
+<p>如下图所示：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/b53642158554470dad9bd8da63c6106b.png" /></p>
+<p><strong>ps：这里的索引表构造可以有多种情况</strong></p>
 <ul>
 <li>若是我们想要找 <span class="arithmatex">\(61\)</span> 那么我们就需要先去在索引表中顺序查找（或是二分查找）我们所需的元素可能出现在哪一块，我们发现 <span class="arithmatex">\(61\)</span> 大于第二块表的最大值，并且小于第三块表的最大值，那么 <span class="arithmatex">\(61\)</span> 就 <strong>可能存在</strong> 第三块表中</li>
 <li>于是我们从下标 <span class="arithmatex">\(10\)</span> 开始查找一直到 <span class="arithmatex">\(12\)</span> （即这一块的范围），因为表内可能是乱序的，于是我们使用顺序查找的方法，然后找到了 <span class="arithmatex">\(61\)</span> 的下标为 <span class="arithmatex">\(11\)</span> 
@@ -1862,7 +1866,7 @@ ASL = L_i + L_s =  \left \lceil log_2(b+1) \right \rceil + \frac{s+1}{2}
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 09:54:15</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 12:08:00</span>
       
     
   </small>

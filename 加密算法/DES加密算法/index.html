@@ -1620,8 +1620,8 @@
 <h3 id="23-ip">2.3 初始置换IP<a class="headerlink" href="#23-ip" title="Permanent link">&para;</a></h3>
 <p>每一组明文都是 <span class="arithmatex">\(64\)</span> 位，我们通过给定的地址映射表，假设表中的第 <span class="arithmatex">\(i\)</span> 个元素的值为 <span class="arithmatex">\(a_i\)</span> 那么我们就需要按照这张表的值来不断交换 明文中第 <span class="arithmatex">\(i\)</span> 个位置的值和第 <span class="arithmatex">\(a_i\)</span> 个位置的值</p>
 <p>假设我们得到一个置换表：</p>
-<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/ffee92fb715747f2b69723d5fd253874.png" />
-对于第一个位置，我们就需要和第 <span class="arithmatex">\(58\)</span> 位的值进行交换，第二个和第 <span class="arithmatex">\(50\)</span> 位的值进行互换依次类推，最终实现将 <span class="arithmatex">\(64\)</span> 位明文的 <strong>位置顺序打乱</strong> </p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/ffee92fb715747f2b69723d5fd253874.png" /></p>
+<p>对于第一个位置，我们就需要和第 <span class="arithmatex">\(58\)</span> 位的值进行交换，第二个和第 <span class="arithmatex">\(50\)</span> 位的值进行互换依次类推，最终实现将 <span class="arithmatex">\(64\)</span> 位明文的 <strong>位置顺序打乱</strong> </p>
 <h3 id="24-f">2.4 F轮变换<a class="headerlink" href="#24-f" title="Permanent link">&para;</a></h3>
 <h4 id="241">2.4.1 拓展置换<a class="headerlink" href="#241" title="Permanent link">&para;</a></h4>
 <p>对于每一个 <span class="arithmatex">\(32\)</span> 位的数据，我们从前往后依次分为 <span class="arithmatex">\(8\)</span> 组，每一组有 <span class="arithmatex">\(4\)</span> 位的数据，我们将这个数据想象成一个 <strong>环形的</strong> ，假设我们现在对第 <span class="arithmatex">\(i\)</span> 组数据进行拓展，那么我们第 <span class="arithmatex">\(i\)</span> 组数据的前面新增第 <span class="arithmatex">\(i-1\)</span> 组的第4位，第 <span class="arithmatex">\(i\)</span> 组数据的后面新增第 <span class="arithmatex">\(i+1\)</span> 组数据的第一位 （注意的是这里的位数都是未拓展前的，也就是 <span class="arithmatex">\(4\)</span> 位，下面举例可能好理解点）</p>
@@ -1639,8 +1639,8 @@
 <p>对于每一个 <span class="arithmatex">\(S\)</span> 盒子我们都有一个对应的一个替换表，我们假设当前的盒子为 <span class="arithmatex">\(b_1b_2b_3b_4b_5b_6\)</span>
 我们需要将其转化为新的数据，那么需要在替换表中查找新的数据，对于查找的行就是由 <span class="arithmatex">\(b_1b_6\)</span> 构成，列则是由 <span class="arithmatex">\(b_2b_3b_4b_5\)</span> 构成</p>
 <p>例如，我们现在有一个 <span class="arithmatex">\(S\)</span> 盒子：<code>110011</code> ，然后我们就能知道在替换表中查找的行为：<span class="arithmatex">\(11_2 = 3\)</span> ，列为 <span class="arithmatex">\(1001_2 = 9\)</span>，也就是第 <span class="arithmatex">\(3\)</span> 行，第 <span class="arithmatex">\(9\)</span> 列，那么这个值在替换表中为 <span class="arithmatex">\(14\)</span></p>
-<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/3d49cca984324f2090a5996c2062c243.png" />
-对于每一个组进行一个 <span class="arithmatex">\(S\)</span> 盒子替换后最后能得到一个 <span class="arithmatex">\(32\)</span> 位的数据</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/3d49cca984324f2090a5996c2062c243.png" /></p>
+<p>对于每一个组进行一个 <span class="arithmatex">\(S\)</span> 盒子替换后最后能得到一个 <span class="arithmatex">\(32\)</span> 位的数据</p>
 <h4 id="244-p">2.4.4 P盒子置换<a class="headerlink" href="#244-p" title="Permanent link">&para;</a></h4>
 <p>将 <span class="arithmatex">\(S\)</span> 盒子的 <span class="arithmatex">\(32\)</span> 位输出数据作为输入，再次通过一个位置置换表（和开始的初始置换IP一样的操作），将当前数据的顺序重新排列，至此一次 <span class="arithmatex">\(F\)</span> 轮函数操作完成</p>
 <h3 id="25">2.5 初始逆变换<a class="headerlink" href="#25" title="Permanent link">&para;</a></h3>
@@ -1973,7 +1973,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 11:57:33</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 12:08:00</span>
       
     
   </small>
