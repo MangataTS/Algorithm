@@ -1605,8 +1605,8 @@
 <li><span class="arithmatex">\(L_i\)</span> 直接等于 <span class="arithmatex">\(R_{i-1}\)</span> ，<span class="arithmatex">\(R_i\)</span> 是等于 <span class="arithmatex">\(L_{i-1} Xor F(R_{i-1},K_i)\)</span></li>
 <li>逆初始置换IP</li>
 </ul>
-<p>流程图如下图：
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/728f5c5fae2f4f7f91dbfc4555be2d0c.png" /></p>
+<p>流程图如下图：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/728f5c5fae2f4f7f91dbfc4555be2d0c.png" /></p>
 <h3 id="22">2.2 密钥生成流程<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
 <p>上面的明文加密流程并未提到密钥，其实密钥主要是用于 <span class="arithmatex">\(R_i\)</span> 的生成，我们将 <span class="arithmatex">\(R_{i-1}\)</span> 和 <span class="arithmatex">\(K_{i}\)</span> 进行一个异或的运算，那么对于 <strong>每一轮子密钥</strong>  （总共 <span class="arithmatex">\(16\)</span> 轮）的生成流程如下：</p>
 <ul>
@@ -1619,8 +1619,8 @@
 <p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/5969572d4f574b78bbcd5dc03fb6a5da.png" /></p>
 <h3 id="23-ip">2.3 初始置换IP<a class="headerlink" href="#23-ip" title="Permanent link">&para;</a></h3>
 <p>每一组明文都是 <span class="arithmatex">\(64\)</span> 位，我们通过给定的地址映射表，假设表中的第 <span class="arithmatex">\(i\)</span> 个元素的值为 <span class="arithmatex">\(a_i\)</span> 那么我们就需要按照这张表的值来不断交换 明文中第 <span class="arithmatex">\(i\)</span> 个位置的值和第 <span class="arithmatex">\(a_i\)</span> 个位置的值</p>
-<p>假设我们得到一个置换表：
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/ffee92fb715747f2b69723d5fd253874.png" />
+<p>假设我们得到一个置换表：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/ffee92fb715747f2b69723d5fd253874.png" />
 对于第一个位置，我们就需要和第 <span class="arithmatex">\(58\)</span> 位的值进行交换，第二个和第 <span class="arithmatex">\(50\)</span> 位的值进行互换依次类推，最终实现将 <span class="arithmatex">\(64\)</span> 位明文的 <strong>位置顺序打乱</strong> </p>
 <h3 id="24-f">2.4 F轮变换<a class="headerlink" href="#24-f" title="Permanent link">&para;</a></h3>
 <h4 id="241">2.4.1 拓展置换<a class="headerlink" href="#241" title="Permanent link">&para;</a></h4>
@@ -1638,8 +1638,8 @@
 <p>我们将 <span class="arithmatex">\(48\)</span> 位的数据按照 <span class="arithmatex">\(6\)</span> 位分一组，总共分为 <span class="arithmatex">\(8\)</span> 组，也成为 <span class="arithmatex">\(8\)</span> 个 <span class="arithmatex">\(S\)</span> 盒子</p>
 <p>对于每一个 <span class="arithmatex">\(S\)</span> 盒子我们都有一个对应的一个替换表，我们假设当前的盒子为 <span class="arithmatex">\(b_1b_2b_3b_4b_5b_6\)</span>
 我们需要将其转化为新的数据，那么需要在替换表中查找新的数据，对于查找的行就是由 <span class="arithmatex">\(b_1b_6\)</span> 构成，列则是由 <span class="arithmatex">\(b_2b_3b_4b_5\)</span> 构成</p>
-<p>例如，我们现在有一个 <span class="arithmatex">\(S\)</span> 盒子：<code>110011</code> ，然后我们就能知道在替换表中查找的行为：<span class="arithmatex">\(11_2 = 3\)</span> ，列为 <span class="arithmatex">\(1001_2 = 9\)</span>，也就是第 <span class="arithmatex">\(3\)</span> 行，第 <span class="arithmatex">\(9\)</span> 列，那么这个值在替换表中为 <span class="arithmatex">\(14\)</span>
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/3d49cca984324f2090a5996c2062c243.png" />
+<p>例如，我们现在有一个 <span class="arithmatex">\(S\)</span> 盒子：<code>110011</code> ，然后我们就能知道在替换表中查找的行为：<span class="arithmatex">\(11_2 = 3\)</span> ，列为 <span class="arithmatex">\(1001_2 = 9\)</span>，也就是第 <span class="arithmatex">\(3\)</span> 行，第 <span class="arithmatex">\(9\)</span> 列，那么这个值在替换表中为 <span class="arithmatex">\(14\)</span></p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/3d49cca984324f2090a5996c2062c243.png" />
 对于每一个组进行一个 <span class="arithmatex">\(S\)</span> 盒子替换后最后能得到一个 <span class="arithmatex">\(32\)</span> 位的数据</p>
 <h4 id="244-p">2.4.4 P盒子置换<a class="headerlink" href="#244-p" title="Permanent link">&para;</a></h4>
 <p>将 <span class="arithmatex">\(S\)</span> 盒子的 <span class="arithmatex">\(32\)</span> 位输出数据作为输入，再次通过一个位置置换表（和开始的初始置换IP一样的操作），将当前数据的顺序重新排列，至此一次 <span class="arithmatex">\(F\)</span> 轮函数操作完成</p>
@@ -1973,7 +1973,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-06-01 16:20:36</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 11:57:33</span>
       
     
   </small>
