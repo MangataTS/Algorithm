@@ -2732,9 +2732,7 @@
 
 <h3 id="58">5.8 常量<a class="headerlink" href="#58" title="Permanent link">&para;</a></h3>
 <h4 id="581">5.8.1 数值常量<a class="headerlink" href="#581" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code>    注意此数值常量非彼数值，我此处所说的常量是单纯的一个值，没有名字那种，比如 3 他是一个整形常量 0.3 是一个浮点常量再比如说 `&#39;c&#39;` 它是一个字符常量 `&quot;ccc&quot;` 它是一个字符串常量，这种就是**数值常量**了，一般只是用来初始化，而且这种数值常量不易维护，比如说我们在一个程序的很多地方都用了同一个常量那么如果你想修改这个常量的值，稍微笨点的同学可能会一个一个的替换，有的同学可能想到了直接文件全局替换，但是这样做是有风险的，比如我的常量为1，我想把它替换为2，但是我可能有一些其他的常量是1开头的，比如12，那么就会造成数据紊乱，甚至有些变量里面也包含了1那么可能会导致编译出错，再退一步讲，编译没问题，程序的运行结果也不会和预期一样
-</code></pre></div>
-
+<p>注意此数值常量非彼数值，我此处所说的常量是单纯的一个值，没有名字那种，比如 3 他是一个整形常量 0.3 是一个浮点常量再比如说 <code>'c'</code> 它是一个字符常量 <code>"ccc"</code> 它是一个字符串常量，这种就是<strong>数值常量</strong>了，一般只是用来初始化，而且这种数值常量不易维护，比如说我们在一个程序的很多地方都用了同一个常量那么如果你想修改这个常量的值，稍微笨点的同学可能会一个一个的替换，有的同学可能想到了直接文件全局替换，但是这样做是有风险的，比如我的常量为1，我想把它替换为2，但是我可能有一些其他的常量是1开头的，比如12，那么就会造成数据紊乱，甚至有些变量里面也包含了1那么可能会导致编译出错，再退一步讲，编译没问题，程序的运行结果也不会和预期一样</p>
 <h4 id="582-define">5.8.2 define常量<a class="headerlink" href="#582-define" title="Permanent link">&para;</a></h4>
 <p>说的浅显易懂点，define就是一个文本替换，格式如下</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#define xxx yyy </span><span class="c1">//达到的效果就是下面的程序所有用到的xxx都会被替换为yyy</span>
@@ -3904,7 +3902,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-03-07 08:58:56</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 09:34:42</span>
       
     
   </small>
