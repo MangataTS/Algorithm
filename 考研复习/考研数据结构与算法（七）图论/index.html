@@ -1,0 +1,2309 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../logo.png">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-8.1.4">
+    
+    
+      
+        <title>考研数据结构与算法（七）图论 - Algorithm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bb3983ee.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Algorithm" class="md-header__button md-logo" aria-label="Algorithm" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Algorithm
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              考研数据结构与算法（七）图论
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/MangataTS/Algorithm/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/0%E5%9F%BA%E7%A1%80C%E8%AF%AD%E8%A8%80%E9%80%9F%E9%80%9A/" class="md-tabs__link">
+        语法基础
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/" class="md-tabs__link">
+        基础算法
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="md-tabs__link">
+        数据结构
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%9B%BE%E8%AE%BA/%E5%BB%BA%E5%9B%BE%E5%9F%BA%E7%A1%80/" class="md-tabs__link">
+        图论
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E6%95%B0%E8%AE%BA/%E5%9F%BA%E7%A1%80%E6%95%B0%E8%AE%BA/" class="md-tabs__link">
+        数论
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%AD%97%E7%AC%A6%E4%B8%B2/KMP%E7%AE%97%E6%B3%95/" class="md-tabs__link">
+        字符串
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01%E8%83%8C%E5%8C%85/" class="md-tabs__link">
+        动态规划
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/%E5%87%AF%E6%92%92%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" class="md-tabs__link">
+        加密算法
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E6%9D%82%E9%A1%B9/%E4%BD%8D%E8%BF%90%E7%AE%97/" class="md-tabs__link">
+        杂项
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E4%B8%93%E6%A0%8F%E7%AE%80%E4%BB%8B/" class="md-tabs__link md-tabs__link--active">
+        考研复习
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Algorithm" class="md-nav__button md-logo" aria-label="Algorithm" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    Algorithm
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/MangataTS/Algorithm/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          语法基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="语法基础" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          语法基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/0%E5%9F%BA%E7%A1%80C%E8%AF%AD%E8%A8%80%E9%80%9F%E9%80%9A/" class="md-nav__link">
+        0基础C语言速通
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          基础算法
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="基础算法" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          基础算法
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/" class="md-nav__link">
+        前缀和与差分
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/" class="md-nav__link">
+        双指针
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        二分算法
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          数据结构
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="数据结构" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          数据结构
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="md-nav__link">
+        并查集
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%8D%95%E8%B0%83%E6%A0%88/" class="md-nav__link">
+        单调栈
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/ST%E8%A1%A8/" class="md-nav__link">
+        ST表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/" class="md-nav__link">
+        二叉排序树
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/AVL%E5%B9%B3%E8%A1%A1%E6%A0%91/" class="md-nav__link">
+        AVL平衡树
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/B-%E6%A0%91%E5%92%8CB%2B%E6%A0%91/" class="md-nav__link">
+        B-树和B+树
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%93%88%E5%B8%8C%E8%A1%A8/" class="md-nav__link">
+        哈希表|散列表
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          图论
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="图论" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          图论
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E8%AE%BA/%E5%BB%BA%E5%9B%BE%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        建图基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E8%AE%BA/DFS%E5%92%8CBFS/" class="md-nav__link">
+        DFS和BFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E8%AE%BA/%E6%9C%80%E7%9F%AD%E8%B7%AF/" class="md-nav__link">
+        最短路
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E8%AE%BA/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" class="md-nav__link">
+        最小生成树
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E8%AE%BA/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" class="md-nav__link">
+        拓扑排序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E8%AE%BA/%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84/" class="md-nav__link">
+        关键路径
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          数论
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="数论" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          数论
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E8%AE%BA/%E5%9F%BA%E7%A1%80%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        基础数论
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          字符串
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="字符串" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          字符串
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AD%97%E7%AC%A6%E4%B8%B2/KMP%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        KMP算法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AD%97%E7%AC%A6%E4%B8%B2/Trie%E6%A0%91/" class="md-nav__link">
+        Trie树
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          动态规划
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="动态规划" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          动态规划
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01%E8%83%8C%E5%8C%85/" class="md-nav__link">
+        01背包
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/" class="md-nav__link">
+        完全背包
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          加密算法
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="加密算法" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          加密算法
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/%E5%87%AF%E6%92%92%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        凯撒加密算法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        维吉尼亚加密算法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/Playfair%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        Playfair加密算法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/%E5%B8%8C%E5%B0%94%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        希尔加密算法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/DES%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        DES加密算法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/AES%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        AES加密算法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/RSA%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        RSA加密算法
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          杂项
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="杂项" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          杂项
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9D%82%E9%A1%B9/%E4%BD%8D%E8%BF%90%E7%AE%97/" class="md-nav__link">
+        位运算
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9D%82%E9%A1%B9/STL%E5%92%8CAlgorithm/" class="md-nav__link">
+        STL和Algorithm
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          考研复习
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="考研复习" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          考研复习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%B8%93%E6%A0%8F%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        专栏简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89%E7%BB%AA%E8%AE%BA/" class="md-nav__link">
+        考研数据结构与算法（一）绪论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89%E7%BA%BF%E6%80%A7%E8%A1%A8/" class="md-nav__link">
+        考研数据结构与算法（二）线性表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" class="md-nav__link">
+        考研数据结构与算法（三）栈和队列
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        考研数据结构与算法（四）字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%94%EF%BC%89%E6%95%B0%E7%BB%84/" class="md-nav__link">
+        考研数据结构与算法（五）数组
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E5%85%AD%EF%BC%89%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91/" class="md-nav__link">
+        考研数据结构与算法（六）树与二叉树
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          考研数据结构与算法（七）图论
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        考研数据结构与算法（七）图论
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    一、图的基本概念
+  </a>
+  
+    <nav class="md-nav" aria-label="一、图的基本概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 图的定义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 基本术语
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 基本术语">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121" class="md-nav__link">
+    1.2.1 有向图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122" class="md-nav__link">
+    1.2.2 无向图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123" class="md-nav__link">
+    1.2.3 简单图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124" class="md-nav__link">
+    1.2.4 多重图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#125" class="md-nav__link">
+    1.2.5 完全图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#126" class="md-nav__link">
+    1.2.6 子图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#127" class="md-nav__link">
+    1.2.7 连通、连通分量、连通图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#128" class="md-nav__link">
+    1.2.8 强连通
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#129" class="md-nav__link">
+    1.2.9 生成树、森林
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1210" class="md-nav__link">
+    1.2.10 顶点的度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1211" class="md-nav__link">
+    1.2.11 边权和网
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1212" class="md-nav__link">
+    1.2.12 稠密、稀疏图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1213" class="md-nav__link">
+    1.2.13 路径、路径长度、回路
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1214" class="md-nav__link">
+    1.2.14 简单路径、简单回路
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1215" class="md-nav__link">
+    1.2.15 距离
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1216" class="md-nav__link">
+    1.2.16 有向树
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    二、图的存储结构
+  </a>
+  
+    <nav class="md-nav" aria-label="二、图的存储结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 邻接矩阵
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 邻接表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 十字链表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 邻接多重链表
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    三、图的遍历方法
+  </a>
+  
+    <nav class="md-nav" aria-label="三、图的遍历方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-bfs" class="md-nav__link">
+    3.1 广度优先搜索（BFS）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-dfs" class="md-nav__link">
+    3.2 深度优先搜索（DFS）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    四、图的基本应用
+  </a>
+  
+    <nav class="md-nav" aria-label="四、图的基本应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 最小生成树
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 最短路径
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 有向无环图描述表达式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    4.4 拓扑排序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    4.5 关键路径
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    五、错题
+  </a>
+  
+    <nav class="md-nav" aria-label="五、错题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    选择题
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E5%85%AB%EF%BC%89%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        考研数据结构与算法（八）查找
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+  
+                
+<a href="https://github.com/MangataTS/Algorithm/edit/master/docs/考研复习/考研数据结构与算法（七）图论.md" title="编辑此页" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="_1">考研数据结构与算法（七）图论<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">一、图的基本概念<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="11">1.1 图的定义<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>图 G 由顶点集 <span class="arithmatex">\(V\)</span> 边集 <span class="arithmatex">\(E\)</span> 组成，记为 <span class="arithmatex">\(G=(V, E)\)</span>  ， 其中 <span class="arithmatex">\(V(G)\)</span> 表示图 <span class="arithmatex">\(G\)</span> 中顶点的有限非空集；
+<span class="arithmatex">\(E(G)\)</span> 表示图 <span class="arithmatex">\(G\)</span> 中顶点之间的关系 （边） 集合。 若 <span class="arithmatex">\(V= {V_1 , V_2，…， V_n}\)</span>，则用 <span class="arithmatex">\(|V|\)</span> 叫表示图中顶点的个数，也称图 <span class="arithmatex">\(G\)</span> 的阶， <span class="arithmatex">\(E = {(u,v) \ | \ u∈V,v∈V}\)</span>，用 <span class="arithmatex">\(|E|\)</span> 表示图 <span class="arithmatex">\(G\)</span> 中边的条数。</p>
+</blockquote>
+<p>注意：<strong>图的顶点集 <span class="arithmatex">\(V\)</span> 一定为非空，而图的边集 <span class="arithmatex">\(E\)</span> 可能为空</strong></p>
+<h3 id="12">1.2 基本术语<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
+<h4 id="121">1.2.1 有向图<a class="headerlink" href="#121" title="Permanent link">&para;</a></h4>
+<p>图中的边集是由方向的，例如有一个从点 <span class="arithmatex">\(A\)</span> 到 <span class="arithmatex">\(B\)</span> 的有向边，那么我们从 <span class="arithmatex">\(A\)</span> 点可以到达 <span class="arithmatex">\(B\)</span> 点，而不能从 <span class="arithmatex">\(B\)</span> 点到达 <span class="arithmatex">\(A\)</span> 点，这样就是一个有向边，在这条边中点 <span class="arithmatex">\(A\)</span> 被称为 <strong>弧尾</strong> ，而点 <span class="arithmatex">\(B\)</span> 被称为 <strong>弧头</strong> ，我们通常用这样的符号来记录这条边：<code>&lt;A,B&gt;</code></p>
+<h4 id="122">1.2.2 无向图<a class="headerlink" href="#122" title="Permanent link">&para;</a></h4>
+<p>很显然**没有方向的边**和顶点集构成的图就为无向图，按照上面的情况，在无向图中顶点之间是互相连通的，即若有一个点 <span class="arithmatex">\(A\)</span> 到点 <span class="arithmatex">\(B\)</span> 的边，从 <span class="arithmatex">\(B\)</span> 出发也是能到达 <span class="arithmatex">\(A\)</span>  点的，我们通常使用这样的符号来记录这条边：<code>(A,B)</code></p>
+<h4 id="123">1.2.3 简单图<a class="headerlink" href="#123" title="Permanent link">&para;</a></h4>
+<p>一个图 <span class="arithmatex">\(G\)</span> 若满足：
+- ①不存在重复边
+- ②不存在顶点到自身的边，则称图 <span class="arithmatex">\(G\)</span> 为简单图 </p>
+<h4 id="124">1.2.4 多重图<a class="headerlink" href="#124" title="Permanent link">&para;</a></h4>
+<p>若图 <span class="arithmatex">\(G\)</span> 中**某两个结点之间的边数多于一条**，又允许顶点通过同一条边也和自己关联，则 <span class="arithmatex">\(G\)</span> 为多重图。多重图的定义和简单图是相对的 </p>
+<h4 id="125">1.2.5 完全图<a class="headerlink" href="#125" title="Permanent link">&para;</a></h4>
+<ul>
+<li>在一个顶点数量为 <span class="arithmatex">\(n\)</span> 的无向图中，若边的数量为 <span class="arithmatex">\(\frac{(n-1)\times n}{2}\)</span> ，则该无向图为完全图</li>
+<li>在一个顶点数量为 <span class="arithmatex">\(n\)</span> 的有向图中，若边的数量为 <span class="arithmatex">\((n-1)\times n\)</span> ，则该有向图为完全图</li>
+</ul>
+<h4 id="126">1.2.6 子图<a class="headerlink" href="#126" title="Permanent link">&para;</a></h4>
+<p>设有两个图 <span class="arithmatex">\(G = (V,E)\)</span> 和 <span class="arithmatex">\(G'＝(V',E')\)</span>， 若 <span class="arithmatex">\(V'\)</span>是 <span class="arithmatex">\(V\)</span> 的子集，且 <span class="arithmatex">\(E'\)</span>是 <span class="arithmatex">\(E\)</span> 的子集，则称 <span class="arithmatex">\(G'\)</span> 是 <span class="arithmatex">\(G\)</span> 的子图，若满足 <span class="arithmatex">\(V' = V\)</span> 且 <span class="arithmatex">\(E' \subset E\)</span> 那么子图 <span class="arithmatex">\(G'\)</span> 为 <span class="arithmatex">\(G\)</span> 的生成子图</p>
+<p><strong>注意：并非 <span class="arithmatex">\(V\)</span> 和 <span class="arithmatex">\(E\)</span> 的任何子集都能构成 <span class="arithmatex">\(G\)</span> 的子图，因为这样的子集可能不是图， 即 <span class="arithmatex">\(E\)</span> 的子集中的某些边关联的顶点可能不在这个 <span class="arithmatex">\(V\)</span> 的子集中</strong></p>
+<h4 id="127">1.2.7 连通、连通分量、连通图<a class="headerlink" href="#127" title="Permanent link">&para;</a></h4>
+<p>关于连通方面的定义都是**基于无向图**的</p>
+<ul>
+<li>连通：在无向图中若从顶点 <span class="arithmatex">\(u\)</span> 到顶点 <span class="arithmatex">\(v\)</span> 有路径存在，那么称 <span class="arithmatex">\(u\)</span> 和 <span class="arithmatex">\(v\)</span> 是连通的</li>
+<li>连通图：若无向图中**任意两点是连通**的，那么这个无向图就称为**连通图**，否则称为非连通图</li>
+<li>连通分量：对于一个连通图而言，其连通分量只有一个就是其本身，而对于非连通图而言，连通分量有多个，其每一个子图（或者称为**极大联通子图**）都是一个连通分量</li>
+</ul>
+<p>很显然一个 <span class="arithmatex">\(n\)</span> 个点的连通图最少有 <span class="arithmatex">\(n-1\)</span> 条边（即后面提到的生成树），最多有 <span class="arithmatex">\(\frac{(n-1)\times n}{2}\)</span> 个边</p>
+<p>这里再补一下 <strong>极小连通子图</strong> 的定义：一个顶点为 <span class="arithmatex">\(n\)</span> 的子图的边数为 <span class="arithmatex">\(n-1\)</span> （其实后面也能知道这其实是生成树的定义） ，就称其为极小连通子图，很显然这样的子图也是一个极大连通子图，因为它是一个连通分量。</p>
+<p>例如，对于下面的这个非连通图，其连通分量有三个：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/43a5c413e2d44864bf2ff0aad24abc46.png" /></p>
+<h4 id="128">1.2.8 强连通<a class="headerlink" href="#128" title="Permanent link">&para;</a></h4>
+<p>关于强连通方面的定义都是**基于有向图**的</p>
+<ul>
+<li>强连通：在有向图中，若从顶点 <span class="arithmatex">\(v\)</span> 到顶点 <span class="arithmatex">\(w\)</span> 和从顶点 <span class="arithmatex">\(w\)</span> 到顶点 <span class="arithmatex">\(v\)</span> 之间**都有路径** ，则称这两个顶点为**强连通**的</li>
+<li>强连通图：若有向图中任意两点之间都是强连通的，那么称这个有向图为**强连通图**，否则称为**非强连通图**</li>
+<li>强连通分量：对于一个强连通图而言，其强连通分量就是本身，而对于一个非强连通图而言，其极大强连通子图就为该非强连通分量（<strong>在子图中任意两点仍满足强连通</strong>）</li>
+</ul>
+<p>例如，对于如下的非强连通图，其中点 <span class="arithmatex">\(A\)</span> 和 <span class="arithmatex">\(B\)</span> 构成的子图就为极大联通子图，即强连通分量，而点 <span class="arithmatex">\(C\)</span> 和 <span class="arithmatex">\(D\)</span> 构成的子图则不是强连通分量
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/c263060e3fa141758307111226bb2fc0.png" /></p>
+<h4 id="129">1.2.9 生成树、森林<a class="headerlink" href="#129" title="Permanent link">&para;</a></h4>
+<p>生成树、森林**一般是基于无向图**的</p>
+<p><strong>连通图的生成树是包含图中全部顶点的一个极小连通子图</strong>，即一个 <span class="arithmatex">\(n\)</span> 个点的连通图中有 <span class="arithmatex">\(n-1\)</span> 条边</p>
+<p>很显然这样的连通图，如果减去一条边就会形成**非连通图**，而若是加上一条边，则会形成**回路**</p>
+<p>例如，下图中的连通图就为一个生成树：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/847db4cb13f049b288432ea92aa0d229.png" /></p>
+<p>而生成森林其实就是多个连通子图都是极小连通子图（生成树），那么就称这个森林为生成森林，例如下图中左边森林为生成森林，而右边的森林不是连通森林：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/45691d0f935e42eeaa960f12b3cb35e8.png" /></p>
+<h4 id="1210">1.2.10 顶点的度<a class="headerlink" href="#1210" title="Permanent link">&para;</a></h4>
+<ul>
+<li>无向图：对于无向图而言，顶点的度就是和该顶点相连接的边数</li>
+<li>有向图：对于有向图而言，指向该顶点的边数称为入度，而从该顶点指出的边数称为出度</li>
+</ul>
+<blockquote>
+<ul>
+<li>无向图的全部顶点的度之和等于两倍的边数</li>
+<li>有向图的全部顶点的出度等于全部顶点的入度等于边数</li>
+</ul>
+</blockquote>
+<h4 id="1211">1.2.11 边权和网<a class="headerlink" href="#1211" title="Permanent link">&para;</a></h4>
+<p>在一个图中，每条边都可以标上具有某种含义的数值，该数值称为该边的权值。 这种边上带有权值的图称为**带权图**，也称网 。
+网中通常分为， <span class="arithmatex">\(AOV\)</span> 网和 <span class="arithmatex">\(AOE\)</span> 网
+- <span class="arithmatex">\(AOV\)</span> 网：没有权值，或者权值都相同，主要是在于点与点之间的先后关系
+- <span class="arithmatex">\(AOE\)</span> 网：有权值，每一个点称为事件，而边称为活动</p>
+<h4 id="1212">1.2.12 稠密、稀疏图<a class="headerlink" href="#1212" title="Permanent link">&para;</a></h4>
+<ul>
+<li>稠密图：点数较大，而边数较少的图称为稀疏图</li>
+<li>稠密图：点数较小，而边数较多的图称为稠密图</li>
+</ul>
+<p>一般来说当图 <span class="arithmatex">\(G\)</span> 满足 <span class="arithmatex">\(|E| &lt; |V|log_2|V|\)</span> 的时候，可以将图G定义为稀疏图，反之则为稠密图</p>
+<h4 id="1213">1.2.13 路径、路径长度、回路<a class="headerlink" href="#1213" title="Permanent link">&para;</a></h4>
+<ul>
+<li>路径：顶点 <span class="arithmatex">\(V_u\)</span> 到顶点 <span class="arithmatex">\(V_v\)</span> 的顶点序列 <span class="arithmatex">\(V_p,V_{i1},V_{i_2},……,V_u\)</span> 称为这两点的路径</li>
+<li>路径长度：路径上**边的数目**称为路径长度</li>
+<li>回路：起点和终点相同的非 <span class="arithmatex">\(0\)</span> 路径长度的路径称为回路</li>
+</ul>
+<h4 id="1214">1.2.14 简单路径、简单回路<a class="headerlink" href="#1214" title="Permanent link">&para;</a></h4>
+<ul>
+<li>简单路径：在路径的顶点序列中顶点不重复的路径称为简单路径</li>
+<li>简单回路：除了起点和终点相同外其余顶点不重复的回路称为简单回路</li>
+</ul>
+<h4 id="1215">1.2.15 距离<a class="headerlink" href="#1215" title="Permanent link">&para;</a></h4>
+<p>从顶点 <span class="arithmatex">\(u\)</span> 出发到顶点 <span class="arithmatex">\(v\)</span> 的最短路径若存在，则此路径的长度称为从 <span class="arithmatex">\(u\)</span> 到 <span class="arithmatex">\(v\)</span> 的距离 。 若从 <span class="arithmatex">\(u\)</span> 到 <span class="arithmatex">\(ν\)</span> 根本不存在路径，则记该距离为无穷 <span class="arithmatex">\((∞)\)</span></p>
+<h4 id="1216">1.2.16 有向树<a class="headerlink" href="#1216" title="Permanent link">&para;</a></h4>
+<p>一个顶点的入度为 <span class="arithmatex">\(0\)</span> 、其余顶点的入度均为 <span class="arithmatex">\(1\)</span> 的有向图，称为**有向树**</p>
+<h2 id="_3">二、图的存储结构<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="21">2.1 邻接矩阵<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>通过一个一维矩阵 <span class="arithmatex">\(V\)</span> 存储顶点信息，然后再通过一个二维矩阵 <span class="arithmatex">\(A\)</span> 存储边的信息</p>
+<p>对于无权图 <span class="arithmatex">\(A[i][j]\)</span> 的含义如下：</p>
+<div class="arithmatex">\[
+A[i][j] = \begin{cases}
+1 ,若(V_i,V_j)或者 &lt;V_i,V_j&gt;是E(G)中的边 \\
+0 ,若(V_i,V_j)或者 &lt;V_i,V_j&gt;不是E(G)中的边\\
+\end{cases}
+\]</div>
+<p>对于有权图 <span class="arithmatex">\(A[i][j]\)</span> 的含义如下：
+$$
+A[i][j] = \begin{cases}
+V[i][j] ,若(V_i,V_j)或者 <V_i,V_j>是E(G)中的边 \
+0或∞ ,若(V_i,V_j)或者 <V_i,V_j>不是E(G)中的边\
+\end{cases}
+$$
+我们可以将这个结构进行封装为如下形式：
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="cp">#define MaxVertexNum 100</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">Vex</span><span class="p">[</span><span class="n">MaxVertexNum</span><span class="p">];</span><span class="c1">//存储当前顶点的表</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">Edge</span><span class="p">[</span><span class="n">MaxVertexNum</span><span class="p">][</span><span class="n">MaxVertexNum</span><span class="p">];</span><span class="c1">//邻接矩阵表</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">vexnum</span><span class="p">,</span><span class="w"> </span><span class="n">arcnum</span><span class="p">;</span><span class="c1">//当前的顶点数和弧数</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos="6 "></span></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<blockquote>
+<p>邻接矩阵存储表示法的特点：
+- ①无向图的邻接矩阵一定是一个对称矩阵且唯一，因此我们可以使用三角矩阵压缩存储，就能节省一半的空间
+- ②对于无向图邻接矩阵的第 <span class="arithmatex">\(i\)</span> 行（列）的非 <span class="arithmatex">\(0\)</span> 元素的个数就为第 <span class="arithmatex">\(i\)</span> 个顶点的度
+- ③对于有向图邻接矩阵，第 <span class="arithmatex">\(i\)</span> 行（列）的非 <span class="arithmatex">\(0\)</span> 元素的个数就为第 <span class="arithmatex">\(i\)</span> 个顶点的出度（入度）
+- ④邻接矩阵适合存储稠密图</p>
+</blockquote>
+<p>一些通过邻接矩阵存储的图的示例如下：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/27135b3367d84a8b841aa75bf0f83b68.png" /></p>
+<h3 id="22">2.2 邻接表<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<p>我们对图中每一个顶点建一个单链表，然后链表的元素就为其所连接的点，这样就能节省大量的空间，这样的邻接表中存在两种类型的结点：顶点结点、边表结点
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/4de7512aed774dc580033e08f9a8da4d.png" />
+这个顶点结点就类似我们之前的头节点，下面是无向图和有向图的邻接链表的例子：</p>
+<p>无向图：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/83f8df78bc3145dfb723443131476544.png" />
+有向图：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/c02411696e834f0290ed3a1ae61b88b0.png" />
+我们可以简单得到一下这个邻接表的结构：
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="cp">#define MaxVertexNum 100 </span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">ArcNode</span><span class="p">{</span><span class="w"> </span><span class="c1">//边表结点</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">adjvex</span><span class="p">;</span><span class="w"> </span><span class="c1">//该弧指向的顶点的位置</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">ArcNode</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span><span class="w"> </span><span class="c1">//下一条弧的位置</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="c1">// infoType info;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="p">}</span><span class="n">ArcNode</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">VNode</span><span class="p">{</span><span class="w"> </span><span class="c1">//顶点结点</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><a href="#__codelineno-1-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="n">VertexType</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"> </span><span class="c1">//顶点的信息，例如值之类的</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><a href="#__codelineno-1-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="n">ArcNode</span><span class="w"> </span><span class="o">*</span><span class="n">first</span><span class="p">;</span><span class="c1">//第一个边表结点的位置</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><a href="#__codelineno-1-10"><span class="linenos" data-linenos="10 "></span></a><span class="p">}</span><span class="n">VNode</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">AdjList</span><span class="p">[</span><span class="n">MaxVertexNum</span><span class="p">];</span><span class="w"> </span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><a href="#__codelineno-1-11"><span class="linenos" data-linenos="11 "></span></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="p">{</span><span class="w"> </span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><a href="#__codelineno-1-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="n">VNode</span><span class="w"> </span><span class="n">AdjList</span><span class="p">[</span><span class="n">MaxVertexNum</span><span class="p">];</span><span class="w"> </span><span class="c1">//顶点结点数组</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><a href="#__codelineno-1-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">vexnum</span><span class="p">,</span><span class="n">arcnum</span><span class="p">;</span><span class="c1">//顶点数和弧数</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><a href="#__codelineno-1-14"><span class="linenos" data-linenos="14 "></span></a><span class="p">}</span><span class="w"> </span><span class="n">ALGraph</span><span class="p">;</span><span class="c1">//封装的邻接表的图</span>
+</code></pre></div></p>
+<blockquote>
+<p>邻接表存储方法特点：
+- ①若图 <span class="arithmatex">\(G\)</span> 为无向图，则邻接表所需的存储空间为 <span class="arithmatex">\(O(|V|+2|E|)\)</span> ，若图 <span class="arithmatex">\(G\)</span> 为有向图，则邻接表所需的存储空间为 <span class="arithmatex">\(O(|V|+|E|)\)</span>
+- ②邻接表适合稀疏图
+- ③图的邻接表表示不唯一，取决于边的读入顺序 </p>
+</blockquote>
+<h3 id="23">2.3 十字链表<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<p>首先来说，十字链表是对于有向图而言的，有一点邻接表和邻接矩阵结合的感觉，首先对于每一个顶点来说有一个顶点结点的概念，然后对于其指向的**边结点**有一个**弧结点**的概念</p>
+<ul>
+<li>
+<p>顶点结点有三个域</p>
+<ul>
+<li><code>data</code> 域存放顶点相关的数据信息，</li>
+<li><code>firstin</code> 域指向以该顶点为弧头的第一个弧结点（比如这个结点是第二个结点，那么就指向**第二列**，从**上往下**看的第一个弧节点元素，当然若是没有的话则指向<code>NULL</code>）</li>
+<li><code>firstout</code> 域指向以该顶点为弧尾的第一个弧结点（比如这个结点是第三个结点，那么就指向**第三行** 的第一个弧结点元素）</li>
+</ul>
+</li>
+<li>
+<p>弧结点有五个域</p>
+<ul>
+<li><code>tailvex</code> 尾域表示弧尾的位置（显然对于**某一行**数据来说，弧尾域都是一样的）</li>
+<li><code>headvex</code> 头域表示弧头的位置（显然对于**某一列**数据来说，弧头域都是一样的）</li>
+<li><code>hlink</code> 链域指向弧头相同的下一条弧（其实就是对于**每一列**的弧结点元素来说，**上下相邻**的元素从上往下指）</li>
+<li><code>tlink</code> 链域指向弧尾相同的下一条弧（其实就是对于**每一行**的弧结点元素来说，**左右相邻**的元素从左往右指）</li>
+<li><code>info</code> 域一般用于弧的值的存储</li>
+</ul>
+</li>
+</ul>
+<p>例如如下有向图构建的十字链表：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/29750b46ea0e4f6a86c07a9507255fbd.png" /></p>
+<p><strong>注意：上图中的弧结点没有<code>info</code> 域</strong></p>
+<h3 id="24">2.4 邻接多重链表<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
+<p>邻接多重表是无向图的另一种链式存储结构，着重于边与边以及边与点的关系，与十字链表类似，邻接多重表也有顶点结点以及边结点</p>
+<ul>
+<li>
+<p>顶点结点有两个域</p>
+<ul>
+<li><code>data</code> 域</li>
+<li><code>firstedge</code> 用于存储与该结点相连的第一条边</li>
+</ul>
+</li>
+<li>
+<p>边结点有六个域（但是一般只用其中间的四个）</p>
+<ul>
+<li><code>mark</code> 域用于标记这个边是否进行操作过，<span class="arithmatex">\(0\)</span> 表示没操作过，<span class="arithmatex">\(1\)</span> 表示操作过了 </li>
+<li><code>ivex</code>  用于表示该边的其中一个结点在图中的**下标**</li>
+<li><code>ilink</code> 用于表示与结点 <code>ivex</code> 相邻的第一条边</li>
+<li><code>jvex</code> 用于表示该边的另一个结点在图中的**下标**</li>
+<li><code>jlink</code> 用于表示与结点 <code>jvex</code> 相邻的第一条边</li>
+<li><code>info</code> 用于表示该边的一些权值等信息</li>
+</ul>
+</li>
+</ul>
+<p>下面是一些绘制邻接多重表的步骤：
+ - ①我们仍然可以先画出该图的邻接表(但不要画箭头)
+ - ②因为该图是一个无向图，所以我们需要将重复的边进行删除（统一规划一下可以尽量从往上删除）
+ - ③然后从每一个顶点结点出发，指向边结点中与之对应的 <span class="arithmatex">\(ilink\)</span> 或者 <span class="arithmatex">\(jlink\)</span> 这里的话有两种方式
+    -  第一种按照 <span class="arithmatex">\(DFS\)</span> 的方法，不断在边结点中找到下一个边结点的位置，直到完成所有的边，再从下一个顶点结点出发
+    - 第二种按照 <span class="arithmatex">\(BFS\)</span> 的方法，首先找到第一个顶点结点的下一个相邻结点，然后再完成下一个顶点结点，然后再不断完成边界点的关系指向
+例如假设我们有如下的图结构：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/aaea161de1c3452f97c1d3ff51bf33ad.png" />
+我们需要绘制邻接表，然后删除重复的边：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/052456da72d646188d36224fd8a598da.png" />
+然后我们采用BFS的方法先完成顶点结点的指向
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/61fab5f7c6bf4bf7bc137ea4448df696.png" />
+然后就是不断根据边结点进行连接了，于是我们就得到了多重邻接表的画法(当然多重邻接表**不一定唯一**)<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/3bb787dfbb864caba6bd6ddb4af7e28f.png" /></p>
+<h2 id="_4">三、图的遍历方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>也可参见我的另一篇介绍：<a href="https://acmer.blog.csdn.net/article/details/122310835">https://acmer.blog.csdn.net/article/details/122310835</a></p>
+<h3 id="31-bfs">3.1 广度优先搜索（BFS）<a class="headerlink" href="#31-bfs" title="Permanent link">&para;</a></h3>
+<p>图的广度优先搜索类似于树的层序遍历，不断地将未访问的结点放入队列，然后出队，再将出队元素所连接的所有未访问点放入队列，这个当队列为空的时候，我们就完成了图的广度优先搜索，简单的搜索如下：</p>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kt">bool</span><span class="w"> </span><span class="n">vis</span><span class="p">[</span><span class="n">N</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kt">void</span><span class="w"> </span><span class="nf">bfs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">s</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">que</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="n">que</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">s</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="n">vis</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><a href="#__codelineno-2-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">que</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><a href="#__codelineno-2-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">que</span><span class="p">.</span><span class="n">front</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><a href="#__codelineno-2-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">        </span><span class="n">que</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><a href="#__codelineno-2-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><a href="#__codelineno-2-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="p">].</span><span class="n">size</span><span class="p">();</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">l</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><a href="#__codelineno-2-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">vis</span><span class="p">[</span><span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">]]){</span><span class="w"></span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><a href="#__codelineno-2-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">                </span><span class="n">que</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><a href="#__codelineno-2-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">                </span><span class="n">vis</span><span class="p">[</span><span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><a href="#__codelineno-2-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><a href="#__codelineno-2-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><a href="#__codelineno-2-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><a href="#__codelineno-2-17"><span class="linenos" data-linenos="17 "></span></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><a href="#__codelineno-2-18"><span class="linenos" data-linenos="18 "></span></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><a href="#__codelineno-2-19"><span class="linenos" data-linenos="19 "></span></a><span class="kt">void</span><span class="w"> </span><span class="nf">BFS_Traverse</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a><a href="#__codelineno-2-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">    </span><span class="n">memset</span><span class="p">(</span><span class="n">vis</span><span class="p">,</span><span class="nb">false</span><span class="p">,</span><span class="k">sizeof</span><span class="w"> </span><span class="n">vis</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><a href="#__codelineno-2-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a><a href="#__codelineno-2-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">vis</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w"> </span><span class="n">bfs</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><a href="#__codelineno-2-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a><a href="#__codelineno-2-24"><span class="linenos" data-linenos="24 "></span></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>当然另一个 <span class="arithmatex">\(BFS\)</span> 的例子是求解**单源最短路问题**，用的是一个以 <span class="arithmatex">\(1\)</span> 为源点，然后求得是到 <span class="arithmatex">\(n\)</span> 的最短距离（当然边权都为 <span class="arithmatex">\(1\)</span> ）
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kt">int</span><span class="w"> </span><span class="n">dis</span><span class="p">[</span><span class="n">N</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kt">bool</span><span class="w"> </span><span class="n">vis</span><span class="p">[</span><span class="n">N</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="kt">int</span><span class="w"> </span><span class="nf">bfs</span><span class="p">(){</span><span class="w"></span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="n">memset</span><span class="p">(</span><span class="n">dis</span><span class="p">,</span><span class="mh">0x3f</span><span class="p">,</span><span class="k">sizeof</span><span class="w"> </span><span class="n">dis</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">que</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><a href="#__codelineno-3-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="n">dis</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><a href="#__codelineno-3-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span><span class="n">que</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><a href="#__codelineno-3-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="n">vis</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><a href="#__codelineno-3-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">que</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span><span class="w"></span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><a href="#__codelineno-3-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">que</span><span class="p">.</span><span class="n">front</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><a href="#__codelineno-3-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">        </span><span class="n">que</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><a href="#__codelineno-3-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><a href="#__codelineno-3-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">dis</span><span class="p">[</span><span class="n">n</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><a href="#__codelineno-3-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="p">].</span><span class="n">size</span><span class="p">();</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">l</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><a href="#__codelineno-3-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">vis</span><span class="p">[</span><span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">]]){</span><span class="w"></span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a><a href="#__codelineno-3-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">                </span><span class="n">que</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><a href="#__codelineno-3-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">                </span><span class="n">dis</span><span class="p">[</span><span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dis</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a><a href="#__codelineno-3-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">                </span><span class="n">vis</span><span class="p">[</span><span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a><a href="#__codelineno-3-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a><a href="#__codelineno-3-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a><a href="#__codelineno-3-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a><a href="#__codelineno-3-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a><a href="#__codelineno-3-23"><span class="linenos" data-linenos="23 "></span></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<blockquote>
+<p>ps ：
+① 如果是想输出这个最短路径的话，我们可以用一个数组记录每一步的前一个点的位置，然后递归输出一下即可
+② 要是想获取层次遍历的结果，只需要在队首元素每次取出的时候输出即可</p>
+</blockquote>
+<p>我们来分析 <span class="arithmatex">\(BFS\)</span> 的时间和空间复杂度
+- 邻接矩阵存储：时间复杂度为 <span class="arithmatex">\(O(|V|^2) = O(n^2)\)</span> ，空间复杂度为 <span class="arithmatex">\(O(|V|) = O(n)\)</span>
+- 邻接表存储：时间复杂度为 <span class="arithmatex">\(O(|V| + |E|) = O(n + e)\)</span> ，空间复杂度为 <span class="arithmatex">\(O(|V|) = O(n)\)</span></p>
+<h3 id="32-dfs">3.2 深度优先搜索（DFS）<a class="headerlink" href="#32-dfs" title="Permanent link">&para;</a></h3>
+<p><span class="arithmatex">\(DFS\)</span> 即优先深度搜索，可能会从一个点开始往一个方向一直往下搜，然后搜到尽头后就回溯，直到当前连通块的所有的结点全都被搜索过，就停止递归搜索，一般来说 <span class="arithmatex">\(DFS\)</span> 的代码都会十分简洁，但是常数耗时会非常大</p>
+<p><div class="highlight"><span class="filename">C++</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kt">bool</span><span class="w"> </span><span class="n">vis</span><span class="p">[</span><span class="n">N</span><span class="p">];</span><span class="c1">//结点被访问情况</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Edge</span><span class="p">[</span><span class="n">N</span><span class="p">];</span><span class="c1">//存储的边</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><a href="#__codelineno-4-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="kt">void</span><span class="w"> </span><span class="nf">DFS</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">s</span><span class="p">){</span><span class="c1">//当前访问的结点</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><a href="#__codelineno-4-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">vis</span><span class="p">[</span><span class="n">s</span><span class="p">])</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><a href="#__codelineno-4-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="n">vis</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="c1">//标记访问</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><a href="#__codelineno-4-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="c1">//do something</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><a href="#__codelineno-4-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Edge</span><span class="p">[</span><span class="n">s</span><span class="p">].</span><span class="n">size</span><span class="p">();</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">l</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><a href="#__codelineno-4-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Edge</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><a href="#__codelineno-4-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">        </span><span class="n">dfs</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="c1">//递归搜索</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><a href="#__codelineno-4-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><a href="#__codelineno-4-11"><span class="linenos" data-linenos="11 "></span></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a><a href="#__codelineno-4-12"><span class="linenos" data-linenos="12 "></span></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a><a href="#__codelineno-4-13"><span class="linenos" data-linenos="13 "></span></a><span class="kt">void</span><span class="w"> </span><span class="nf">DFS_Traverse</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a><a href="#__codelineno-4-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">    </span><span class="n">memset</span><span class="p">(</span><span class="n">vis</span><span class="p">,</span><span class="nb">false</span><span class="p">,</span><span class="k">sizeof</span><span class="w"> </span><span class="n">vis</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a><a href="#__codelineno-4-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a><a href="#__codelineno-4-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">vis</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w"> </span><span class="n">dfs</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a><a href="#__codelineno-4-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a><a href="#__codelineno-4-18"><span class="linenos" data-linenos="18 "></span></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+我们可以明显看出 <span class="arithmatex">\(DFS\)</span> 的代码较为简洁，我们来分析一下 <span class="arithmatex">\(DFS\)</span> 的时间复杂度</p>
+<ul>
+<li>邻接矩阵存储：时间复杂度为 <span class="arithmatex">\(O(|V|^2) = O(n^2)\)</span> ，空间复杂度为 <span class="arithmatex">\(O(|V|) = O(n)\)</span></li>
+<li>邻接表存储：时间复杂度为 <span class="arithmatex">\(O(|V| + |E|) = O(n + e)\)</span> ，空间复杂度为 <span class="arithmatex">\(O(|V|) = O(n)\)</span></li>
+</ul>
+<h2 id="_5">四、图的基本应用<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="41">4.1 最小生成树<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<p>最小生成树算法在我另一篇博客有较为详细的讲解：
+<a href="https://acmer.blog.csdn.net/article/details/118560004">https://acmer.blog.csdn.net/article/details/118560004</a></p>
+<h3 id="42">4.2 最短路径<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<p>最短路径算法在我另一篇博客有较为详细的讲解：（包括Floyd、bellman、SPFA、Dijkstra）</p>
+<p><a href="https://acmer.blog.csdn.net/article/details/123040285">https://acmer.blog.csdn.net/article/details/123040285</a></p>
+<h3 id="43">4.3 有向无环图描述表达式<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
+<p>有向无环图：字面意思一个不存在环的有向图，简称 <span class="arithmatex">\(DAG\)</span> 图
+对于一个中缀表达式，我们首先是能够将其转化为二叉树的，例如：对于该表达式 <span class="arithmatex">\((a+b)(c-d)\)</span> 的二叉树结构如下：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/a78486164f5740319eccfba2d67731df.png" />
+再来个复杂点的表达式：
+$$
+( ( a + b) * ( b * ( c + d)) + ( c + d) * e) * ( ( c + d) * e)
+$$</p>
+<p>还是先画出这个表达式的二叉树结构
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/66a1f2bf329242f6a6f64e6ca420c562.png" />
+我们发现对于根结点的右子树 <span class="arithmatex">\((c+d)*e\)</span> 其实可以删掉,，用根节点指向另一个一样的子树结点，于是得到了如下结构：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/5d6884a229d04036be5bc075deb4bb81.png" />
+然后我们发现子树结构 <span class="arithmatex">\((c+d)\)</span> 其实也是重复的，于是我们决定删除一个，就得到了如下结构：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/2494177c40d946d5b7d8c3501e5145d7.png" />
+然后我们发现结点 <span class="arithmatex">\(b\)</span> 其实也是重复的，于是我们删除一个就得到了：
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/e1ec0deacafd4dc2938637fe797da6e6.png" />
+我们发现化二叉树为 <span class="arithmatex">\(DAG\)</span> 图的时候实际上就是将二叉树重复的子树删掉，并且将分支结点指向其中一个子树即可</p>
+<h3 id="44">4.4 拓扑排序<a class="headerlink" href="#44" title="Permanent link">&para;</a></h3>
+<p>拓扑排序算法在我另一篇博客有较为详细的讲解：
+<a href="https://acmer.blog.csdn.net/article/details/126533628">https://acmer.blog.csdn.net/article/details/126533628</a></p>
+<h3 id="45">4.5 关键路径<a class="headerlink" href="#45" title="Permanent link">&para;</a></h3>
+<p>关键路径算法在我另一篇博客有较为详细的讲解：
+<a href="https://acmer.blog.csdn.net/article/details/126537260">https://acmer.blog.csdn.net/article/details/126537260</a></p>
+<h2 id="_6">五、错题<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="_7">选择题<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/63be4394515e4f3cbf2789c00cc3dbbf.png" /></p>
+<blockquote>
+<p>若 <span class="arithmatex">\(E'\)</span> 中的边对应的顶点不是 <span class="arithmatex">\(V'\)</span> 的元素， <span class="arithmatex">\(V'\)</span> 和 <span class="arithmatex">\({E'}\)</span> 无法构成图，故选项 <span class="arithmatex">\(B\)</span> 错
+且若图非连通， 则从某一顶点出发无法出问到其他全部顶点，选项 <span class="arithmatex">\(D\)</span> 的说法不准确</p>
+</blockquote>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/b48533f90cbb4e29b991e92697ceb216.png" /></p>
+<blockquote>
+<p>若无向图中本来就是连通的，那么该图有且只有一个连通分量（极大连通子图）就是其本身（若是其子集构成的新无向图则不是原图的连通分量，而是属于新图的连通分量）
+若无向图不是连通的，那么其每一个连通子图都是一个连通分量</p>
+</blockquote>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/266a442375e942d4bc5397efd91acbd5.png" /></p>
+<blockquote>
+<p>这里符合深度优先遍历的序列数只有第一个以及第四个，其余都不符合</p>
+</blockquote>
+<hr>
+
+<blockquote>
+<p>判断有向图中是否存在回路，除可以利用拓扑排序外，还可以利用什么算法？ <span class="arithmatex">\((C)\)</span>
+- A. 求关键路径的方法
+- B. 求最短路径的 Dijkstra 算法
+- C. 深度优先边历算法
+- D. 广度优先选历算法
+解析：利用深度优先遍历可以判断图 <span class="arithmatex">\(G\)</span> 中是否存在回路。对于无向图来说，若深度优先遍历过程中遇到了回边，则必定存在环；对于有向图来说，这条回边可能是指向深度优先森林中另一棵生成树上的顶点的弧；但是，从有向图的某个顶点 <span class="arithmatex">\(v\)</span> 出发进行深度优先遍历时，若在 <span class="arithmatex">\(DFS(v)\)</span>结束之前 出现一条从顶点 <span class="arithmatex">\(u\)</span> 到顶点 <span class="arithmatex">\(v\)</span> 的回边，且 <span class="arithmatex">\(u\)</span> 在生成树上是 <span class="arithmatex">\(v\)</span> 的子孙，则有向图必定存在包含顶点 <span class="arithmatex">\(v\)</span> 和顶点 <span class="arithmatex">\(u\)</span> 的环</p>
+</blockquote>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/622f4f60e7e3448a8eb15a5d236731a7.png" /></p>
+<blockquote>
+<p>对一个有向图做深度优先遍历，并未专门判断有向图是否有环（有向回路〉存在，无论图中 是否有环，都得到一个顶点序列。若无环，在退出边归过程中输出的应是逆拓扑有序序列。对有向无环图利用深度优先搜索进行拓扑排序的例子如下：
+如下图所示，退出 <span class="arithmatex">\(DFS\)</span> 栈的顺序为 <span class="arithmatex">\(efgdcahb\)</span> ，此图的一个拓扑序列为 <span class="arithmatex">\(bhacdgfe\)</span> 。该方法的每一步均是先输出当前无后继的结点，即对每个结点 <span class="arithmatex">\(v\)</span> ，先递归地求出 <span class="arithmatex">\(v\)</span> 的每个后继的拓扑序列。 对于一个<span class="arithmatex">\(AOV\)</span> 网，按此方法输出的序列是一个逆拓扑序列 。
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/302d62e9632846cc9a5a88e528e4b5bb.png" /></p>
+</blockquote>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/0f8ee06229ba486693e6af6511f0bc4d.png" /></p>
+<blockquote>
+<p>若不存在拓扑排序，则表示圈中必定**存在回路**，该回路构成一个强连通分量</p>
+</blockquote>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/440318fc77a6435caa50038fa4ee1d04.png" /></p>
+<blockquote>
+<ul>
+<li><span class="arithmatex">\(Ⅰ\)</span> 中，对于一个存在环路的有向图，使用拓扑排序算法运行后，肯定会出现有环的子图，在此环中无法再找到入度为 <span class="arithmatex">\(0\)</span> 的结点，拓扑排序也就进行不下去。</li>
+<li><span class="arithmatex">\(Ⅱ\)</span> 中，注意，若两个结点之间**不存在祖先或子孙关系**，则它们在拓扑序列中的**关系是任意的**（即前后关系任意），因此使用栈和队列都可以，因为进栈或队列的都是入度为 <span class="arithmatex">\(0\)</span> 的结点，此时入度为 <span class="arithmatex">\(0\)</span> 的所有结点是没有关系的。</li>
+<li><span class="arithmatex">\(Ⅲ\)</span> 中，若拓扑有序序列唯一，则很自然地让人联系到一个线性的有向图**（错误）**，下图的拓扑序列也是唯一的，但度却不满足条件
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/27a571106ba546409ec37bcb66ec0aae.png" /></li>
+</ul>
+</blockquote>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/060a33a984614316bded13bf214db3a2.png" /></p>
+<blockquote>
+<p>总共有五种：
+- <code>ABCDEFG</code>
+- <code>ABCDFEG</code>
+- <code>ABDCEEG</code>
+- <code>ABDCFEG</code>
+- <code>ABCFDEG</code></p>
+</blockquote>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20489aa1abd04888b50ebe9050c4f458.png" /></p>
+<blockquote>
+<ul>
+<li><span class="arithmatex">\(Ⅰ\)</span> ：有向图中的度为入度加出度，而矩阵中第 <span class="arithmatex">\(V\)</span> 行只能代表点 <span class="arithmatex">\(V\)</span> 的出度数</li>
+<li><span class="arithmatex">\(Ⅱ\)</span> ：无向图的邻接矩阵一定是对称矩阵，有向图的邻接矩阵也有可能是对称矩阵</li>
+<li><span class="arithmatex">\(Ⅲ\)</span> ：最小生成树中的 <span class="arithmatex">\(n-1\)</span> 条边并不能保证是图中权值最小的 <span class="arithmatex">\(n - 1\)</span> 条边， 因为权值最小的 <span class="arithmatex">\(n-1\)</span> 条边并不一定能使图连通，所以会存在某条边权值超过未选的边</li>
+<li><span class="arithmatex">\(Ⅳ\)</span> ：有向无环图的拓扑序列唯一并不能唯一确定该图。在下图所示的两个有向无环图中，拓扑序列都为 <span class="arithmatex">\(V_1, V_2, V_3,V_4\)</span> 
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/cb67101f760645058fb9edaa023e2d14.png" /></li>
+</ul>
+</blockquote>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/7f9c03392e82434db547482cb82f496b.png" /></p>
+<blockquote>
+<p>先将该表达式转换成**有向二叉树**，注意到该二叉树中有些顶点是重复的，为了节省存储空间， 可以去除重复的顶点（使顶点个数达到最少），将有向二叉树去重转换成有向无环图，如下图所示。
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/6c46ab686fd5461491941a52407e4c06.png" /></p>
+</blockquote>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 08:01:40</span>
+      
+    
+  </small>
+</div>
+
+              
+  <!-- Giscus -->
+  <h2 id="__comments">评论</h2>
+  <!-- Replace with generated snippet -->
+  <script src="https://giscus.app/client.js"
+        data-repo="MangataTS/Algorithm"
+        data-repo-id="R_kgDOGpOt2Q"
+        data-category="General"
+        data-category-id="DIC_kwDOGpOt2c4CN6ks"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark") 
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E5%85%AD%EF%BC%89%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 考研数据结构与算法（六）树与二叉树" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              考研数据结构与算法（六）树与二叉树
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E5%85%AB%EF%BC%89%E6%9F%A5%E6%89%BE/" class="md-footer__link md-footer__link--next" aria-label="下一页: 考研数据结构与算法（八）查找" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              考研数据结构与算法（八）查找
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; power by Kaptree
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "header.autohide", "navigation.top", "toc.integrate", "content.code.annotate", "toc.follow", "navigation.indexes"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "search": "../../assets/javascripts/workers/search.361d90f1.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.289a2a4b.min.js"></script>
+      
+        <script src="../../javascripts/cheat.js"></script>
+      
+        <script src="../../javascripts/baidu-tongji.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../javascripts/MathJaxTex.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+    
+  </body>
+</html>
