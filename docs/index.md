@@ -32,25 +32,55 @@
 
 下面是部分证书，大大小小小国奖十项左右，省奖十余项，省奖就不列出了
 
-![CCCC2021全国个人二等奖.jpg](http://yun.mangata.ltd/api/v3/share/preview/rkES0)
+![2021济南荣誉奖.jpg](https://img-blog.csdnimg.cn/4f11c5f43f604487a8d8c98620ce012b.jpeg)
 
-![ECfinal荣誉奖.jpg](http://yun.mangata.ltd/api/v3/share/preview/v2msj)
+<hr>
 
-![2021年银川荣誉奖.jpg](http://yun.mangata.ltd/api/v3/share/preview/wpRUz)
+![2021蓝桥国三.jpg](https://img-blog.csdnimg.cn/15ad8d6de0054661abf3ef562824a055.jpeg)
 
-![CCCC2021全国团队三等奖.jpg](http://yun.mangata.ltd/api/v3/share/preview/xk9c4)
+<hr>
 
-![2022昆明荣誉奖.jpg](http://yun.mangata.ltd/api/v3/share/preview/yP7fz)
 
-![SCPC铜牌.jpg](http://yun.mangata.ltd/api/v3/share/preview/zpYhp)
+![2021年银川荣誉奖.jpg](https://img-blog.csdnimg.cn/3e1c4a8d09a0450db5875a675b95a84a.jpeg)
 
-![第二届全国大学生算法设计与编程挑战赛银牌.jpg](http://yun.mangata.ltd/api/v3/share/preview/ADOi3)
+<hr>
 
-![第十五届计算机博弈大赛全国二等奖.jpg](http://yun.mangata.ltd/api/v3/share/preview/BBXs9)
 
-![2021济南荣誉奖.jpg](http://yun.mangata.ltd/api/v3/share/preview/DkxtK)
+![2022昆明荣誉奖.jpg](https://img-blog.csdnimg.cn/ae10a1c0d1ee47ea85e661c8cecc1804.jpeg)
 
-![2021蓝桥国三.jpg](http://yun.mangata.ltd/api/v3/share/preview/G67Hp)
+<hr>
+
+
+![CCCC2021全国个人二等奖.jpg](https://img-blog.csdnimg.cn/2800b4c6e00e42c5ac0dfe49fb88688f.jpeg)
+
+<hr>
+
+
+![CCCC2021全国团队三等奖.jpg](https://img-blog.csdnimg.cn/38449fbef2664069a9ad7f3ffa115148.jpeg)
+
+<hr>
+
+
+![ECfinal荣誉奖.jpg](https://img-blog.csdnimg.cn/b85622c7f19f4872b59a3e9aa3aa99d1.jpeg)
+
+<hr>
+
+
+![SCPC铜牌.jpg](https://img-blog.csdnimg.cn/9514fd4ba9dc40e0bfc4a94975b87a13.jpeg)
+
+<hr>
+
+
+![第二届全国大学生算法设计与编程挑战赛银牌.jpg](https://img-blog.csdnimg.cn/29e3fab3a47648cdbad11b42a8f9d0da.jpeg)
+
+<hr>
+
+
+![第十五届计算机博弈大赛全国二等奖.jpg](https://img-blog.csdnimg.cn/a0f6838d4d8243c6bcd89fc6f591bb20.png)
+
+<hr>
+
+
 
 ## 感谢
 本网站模式参考 $OI \ Wiki$ 
