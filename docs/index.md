@@ -16,6 +16,13 @@
 
 [![Top Langs](https://profile-counter.glitch.me/MangataTS/count.svg)](https://mangatats.github.io/Algorithm)
 
+
+<hr>
+
+国内的话可以访问 [http://blog.mangata.ltd/](http://blog.mangata.ltd/) ，按理说会更快一点（充了钱
+
+<hr>
+
 ## 网站简介
 
 欢迎来到我的算法和数据结构学习笔记的一个小网站，在这里我将记录一些算法的个人理解以及题目集合，包括不限于各大OJ以及蓝桥杯、天梯赛、ICPC、CCPC等训练的题解。

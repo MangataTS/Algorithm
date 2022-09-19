@@ -11,6 +11,12 @@
 - 📫 QQ交流群：[1055277728](https://jq.qq.com/?_wv=1027&k=Y1N8ePmm)
 - 😄 Blogs: [acmer.blog.csdn.net](https://acmer.blog.csdn.net/?type=blog)
 
+<hr>
+
+国内的话可以访问 [http://blog.mangata.ltd/](http://blog.mangata.ltd/) ，按理说会更快一点（充了钱
+
+<hr>
+
 ## &#x1f92b; Algorithm Visitors
 
 
